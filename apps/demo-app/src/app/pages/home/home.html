@@ -27,8 +27,29 @@
     </div>
   </section>
 
+  <section class="mt-20" aria-labelledby="home-brands">
+    <h2 id="home-brands" class="text-sm font-semibold tracking-widest text-neutral-500">
+      {{ 'HOME.BRANDS_LABEL' | translate }}
+    </h2>
+    <div class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Brand">
+      @for (brand of brands; track brand.id) {
+      <button
+        type="button"
+        (click)="selectBrand(brand.id)"
+        [class.bg-neutral-900]="activeBrand()?.id === brand.id"
+        [class.text-white]="activeBrand()?.id === brand.id"
+        [class.border-neutral-300]="activeBrand()?.id !== brand.id"
+        [class.hover:bg-neutral-100]="activeBrand()?.id !== brand.id"
+        class="rounded-full border px-4 py-2 text-sm font-semibold transition-colors"
+      >
+        {{ brand.labelKey | translate }}
+      </button>
+      }
+    </div>
+  </section>
+
   <section
-    class="mt-20 grid gap-4 sm:grid-cols-3"
+    class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
     aria-labelledby="home-features"
   >
     <h2 id="home-features" class="sr-only">
@@ -37,6 +58,7 @@
     @for (feature of [
       { key: 'HOME.FEATURE_MOCK', icon: '🛠️' },
       { key: 'HOME.FEATURE_THEME', icon: '🌗' },
+      { key: 'HOME.FEATURE_BRANDS', icon: '🎨' },
       { key: 'HOME.FEATURE_I18N', icon: '🌍' },
     ]; track feature.key) {
     <div class="rounded-2xl border border-neutral-200 bg-white p-6">

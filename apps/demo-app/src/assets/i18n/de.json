@@ -19,7 +19,8 @@
     "UNAVAILABLE": "Demnächst verfügbar",
     "NAV_SECTION": "Navigation",
     "NAV_HOME": "Start",
-    "NAV_PROFILE": "Profil"
+    "NAV_PROFILE": "Profil",
+    "POWERED_BY": "Unterstützt von"
   },
   "LANGUAGE_SELECT": {
     "TRIGGER_ARIA": "Sprache ändern",
@@ -66,6 +67,11 @@
     "FEATURES": "Was drinsteckt",
     "FEATURE_MOCK": "Mock-API auf Cloudflare — die App läuft ohne Backend.",
     "FEATURE_THEME": "Helles/dunkles Design, das dem Betriebssystem folgt.",
-    "FEATURE_I18N": "Acht Sprachen, inklusive RTL."
+    "FEATURE_I18N": "Acht Sprachen, inklusive RTL.",
+    "BRANDS_LABEL": "Demo-Marke",
+    "BRAND_SOLSTICE": "Solstice",
+    "BRAND_HARBOR": "Harbor",
+    "BRAND_MEADOW": "Meadow",
+    "FEATURE_BRANDS": "Drei Demo-Marken wechseln die Palette live."
   }
 }

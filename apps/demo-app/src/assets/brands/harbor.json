@@ -1,0 +1,22 @@
+{
+  "id": "harbor",
+  "name": "Harbor",
+  "tenantLabel": "Our Harbor",
+  "tagline": "Calm waters, clear code.",
+  "taglineSub": "A demo brand on the neutral palette.",
+  "logo": {
+    "url": "./assets/brands/harbor-logo.svg",
+    "alt": "Harbor"
+  },
+  "colors": {
+    "brand": "#0e7490",
+    "brand-hover": "#128aa8",
+    "brand-subtle": "#dceef3",
+    "accent": "#0f766e",
+    "link": "#0e6378",
+    "progress": "#0f766e"
+  },
+  "fonts": {
+    "display": "Inter"
+  }
+}

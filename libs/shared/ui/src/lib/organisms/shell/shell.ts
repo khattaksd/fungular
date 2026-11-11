@@ -9,6 +9,7 @@ import {
   input,
   linkedSignal,
 } from '@angular/core';
+import { BrandTheme } from '@libs/theme';
 import { Layout, ViewportService } from '../../core/viewport.service';
 import { ShellHeaderComponent } from '../shell-header/shell-header';
 import {
@@ -48,7 +49,8 @@ export class ShellComponent {
 
   readonly navItems = input.required<readonly ShellNavItem[]>();
   readonly footerItems = input<readonly ShellNavItem[]>([]);
-  readonly logo = input<ShellLogo | null>(null);
+  readonly brand = input<BrandTheme | null>(null);
+  readonly platformLogo = input<ShellLogo | null>(null);
   readonly userName = input('');
   readonly userAvatarUrl = input<string | null>(null);
   readonly hasUnread = input(false);

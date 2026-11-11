@@ -31,6 +31,26 @@ test.describe('navigation', () => {
     await expect(page.getByRole('radiogroup')).toHaveCount(2);
   });
 
+  test('demo brands re-theme the page from the URL and from the switcher', async ({
+    page,
+  }) => {
+    const brandVar = () =>
+      page.evaluate(() =>
+        getComputedStyle(document.documentElement)
+          .getPropertyValue('--color-brand')
+          .trim(),
+      );
+
+    // `?brand=` is applied at startup (the app initializer fetches the JSON),
+    // and the switcher applies one without a reload. The 10s poll covers a
+    // cold first run where branding loads at the far end of its 3s timeout.
+    await page.goto('/?brand=harbor');
+    await expect.poll(brandVar, { timeout: 10_000 }).toBe('#0e7490');
+
+    await page.getByRole('button', { name: 'Meadow' }).click();
+    await expect.poll(brandVar, { timeout: 10_000 }).toBe('#3f6212');
+  });
+
   test('falls back to the not-found page for an unknown route', async ({
     page,
   }) => {

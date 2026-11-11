@@ -9,6 +9,8 @@ import {
   type Decorator,
   type Preview,
 } from '@storybook/angular-vite';
+import { applyStoryBrand, BRANDS } from './brand';
+
 /**
  * Mirrors `ThemeService.apply()`: tokens key off `[data-theme]`, Tailwind's
  * `dark:` variant keys off the `dark` class — both must move together or the
@@ -27,6 +29,16 @@ const withThemeAndDirection: Decorator = (story, context) => {
 };
 
 const preview: Preview = {
+  // Applies the demo brand's CSS variables before each story renders; the
+  // theme is handed to stories as `loaded.brand`. Dev-only: the app has no
+  // brand switcher in the shell (it reads `?brand=`; the home page demos it).
+  loaders: [
+    async (context) => ({
+      brand: await applyStoryBrand(
+        (context.globals['brand'] as string) ?? BRANDS[0],
+      ),
+    }),
+  ],
   decorators: [
     withThemeAndDirection,
     applicationConfig({
@@ -61,6 +73,18 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    brand: {
+      description: 'Demo brand — applied from the mock brand JSON',
+      toolbar: {
+        title: 'Brand',
+        icon: 'circlehollow',
+        items: BRANDS.map((value) => ({
+          value,
+          title: value[0]?.toUpperCase() + value.slice(1),
+        })),
+        dynamicTitle: true,
+      },
+    },
     dir: {
       description: 'Text direction — rtl is what Arabic renders under',
       toolbar: {
@@ -76,6 +100,7 @@ const preview: Preview = {
   },
   initialGlobals: {
     theme: 'light',
+    brand: 'solstice',
     dir: 'ltr',
   },
   parameters: {

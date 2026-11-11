@@ -5,7 +5,7 @@ const meta: Meta<ShellHeaderComponent> = {
   title: 'Organisms/Shell header',
   component: ShellHeaderComponent,
   args: {
-    logo: { url: '/favicon.ico', alt: 'fungular' },
+    logo: { url: './assets/logo.svg', alt: 'fungular' },
     userName: 'Alex',
     hasUnread: true,
     menuOpen: false,

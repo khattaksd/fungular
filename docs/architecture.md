@@ -7,10 +7,10 @@ contributors and agents are in [`AGENTS.md`](../AGENTS.md); coding standards in
 ## Layout
 
 ```
-apps/demo-app/            The Angular app: routes, pages (home, not-found), shell wiring
+apps/demo-app/            The Angular app: routes, pages (home, not-found), shell wiring, demo brand JSON
 libs/
   environment/            Build-time environment files and API path constants
-  theme/                  Design tokens and ThemeService (light/dark)
+  theme/                  Design tokens, ThemeService (light/dark), BrandThemeService (demo brands)
   profile/  settings/     Feature libraries
   shared/
     ui/                   Atoms, molecules, organisms, ViewportService, error handling
@@ -34,12 +34,20 @@ Worker or backend later means replacing the function, not changing features.
 
 ## Theming
 
-fungular ships **no brand and no design-system constraints** by design. The palette
-in `libs/theme/src/styles/_tokens.scss` is the plain Tailwind `neutral` scale, and
-`ThemeService` toggles light/dark via `data-theme` plus the `dark` class, following
-the OS by default. A future theming layer (brand systems, Figma sync, design tokens)
-can re-map the `--color-*` variables without touching a component — the tokens are
-the only seam that would change.
+fungular ships **no design-system constraints** by design, but it does demonstrate
+runtime theming twice over:
+
+- **Light/dark** — `ThemeService` toggles `data-theme` plus the `dark` class,
+  following the OS by default. The dark palette (`_themes.scss`) is enabled; it
+  restyles surfaces, text and status colours while keeping the neutral scale.
+- **Demo brands** — `BrandThemeService` fetches one of three fictional brands
+  (`assets/brands/{solstice,harbor,meadow}.json`), validates every value, and sets
+  the brand's `--color-*` tokens as inline variables on `<html>`. Inline styles
+  beat the stylesheet, and brands only own the *brand* family of tokens
+  (`brand`, `brand-hover`, `brand-subtle`, `accent`, `link`, `progress`), so
+  surfaces and text stay theme-controlled and brands read identically in light
+  and dark. `?brand=` picks the brand at startup; the home page switches it live;
+  the JSON is the swap point for a real branding source later.
 
 ### Library Tags and Dependency Rules
 
@@ -114,11 +122,14 @@ same reason.
 ### Design-system Storybook
 
 Every `@libs/ui` component has a colocated story (`*.stories.ts`) — open a
-component, change its inputs in the Controls panel, and use the two toolbar
+component, change its inputs in the Controls panel, and use the three toolbar
 switches to test it visually:
 
+- **Brand** — applies one of the three demo brands (Solstice, Harbor, Meadow) by
+  loading its JSON and setting the brand CSS variables, exactly as the app does at
+  startup. App shell stories read it from the `loaded.brand` loader.
 - **Theme** — flips the tokens between light and dark via `data-theme`,
-  the same attribute `ThemeService` drives in the app. Dark is currently gated off.
+  the same attribute `ThemeService` drives in the app.
 - **Direction** — flips `dir` between LTR and RTL, which is what Arabic renders
   under.
 

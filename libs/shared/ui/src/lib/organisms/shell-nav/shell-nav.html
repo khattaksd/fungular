@@ -69,11 +69,32 @@
     [ngTemplateOutletContext]="{ $implicit: items() }"
   />
 
+  @if (tenantLabel(); as label) {
+  <hr class="nav__rule" />
+  <span class="nav__link nav__link--static">
+    <lib-icon name="leaf" size="md" />
+    <span class="nav__label">{{ label }}</span>
+  </span>
+  }
+
   <div class="nav__foot">
+    @if (!collapsed() && tagline(); as line) {
+    <p class="nav__tagline">{{ line }}</p>
+    @if (taglineSub(); as sub) {
+    <p class="nav__tagline-sub">{{ sub }}</p>
+    } }
     <hr class="nav__rule" />
     <ng-container
       [ngTemplateOutlet]="list"
       [ngTemplateOutletContext]="{ $implicit: footerItems() }"
     />
+    @if (platformLogo(); as platform) {
+    <p class="nav__powered">
+      @if (!collapsed()) {
+      <span>{{ 'SHELL.POWERED_BY' | translate }}</span>
+      }
+      <img [src]="platform.url" [alt]="platform.alt" />
+    </p>
+    }
   </div>
 </nav>

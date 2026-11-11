@@ -19,7 +19,8 @@
     "UNAVAILABLE": "Coming soon",
     "NAV_SECTION": "Navigate",
     "NAV_HOME": "Home",
-    "NAV_PROFILE": "Profile"
+    "NAV_PROFILE": "Profile",
+    "POWERED_BY": "Powered by"
   },
   "LANGUAGE_SELECT": {
     "TRIGGER_ARIA": "Change language",
@@ -66,6 +67,11 @@
     "FEATURES": "What’s inside",
     "FEATURE_MOCK": "A mock API on Cloudflare — the app runs with no backend.",
     "FEATURE_THEME": "A light/dark theme that follows your OS.",
-    "FEATURE_I18N": "Eight languages, RTL included."
+    "FEATURE_I18N": "Eight languages, RTL included.",
+    "BRANDS_LABEL": "Demo brand",
+    "BRAND_SOLSTICE": "Solstice",
+    "BRAND_HARBOR": "Harbor",
+    "BRAND_MEADOW": "Meadow",
+    "FEATURE_BRANDS": "Three demo brands switch the palette live."
   }
 }

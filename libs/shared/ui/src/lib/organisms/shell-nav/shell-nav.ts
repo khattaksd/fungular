@@ -31,11 +31,12 @@ export interface ShellLogo {
 }
 
 /**
- * The shell's left navigation: the app's destinations and a footer of support
- * links.
+ * The shell's left navigation: the app's destinations, the brand's own space,
+ * a tagline, support links and the platform mark.
  *
- * Presentational — the app supplies the items, so the shell never imports a
- * feature. Collapsed, it becomes an icon rail with the label under each icon.
+ * Presentational — the app supplies the items and the brand copy, so the shell
+ * never imports a feature. Collapsed, it becomes an icon rail with the label
+ * under each icon.
  */
 @Component({
   selector: 'lib-shell-nav',
@@ -55,6 +56,12 @@ export class ShellNavComponent {
   readonly items = input.required<readonly ShellNavItem[]>();
   readonly footerItems = input<readonly ShellNavItem[]>([]);
   readonly collapsed = input(false);
+  /** The brand's own space, e.g. "Our Solstice". */
+  readonly tenantLabel = input<string | null>(null);
+  readonly tagline = input<string | null>(null);
+  readonly taglineSub = input<string | null>(null);
+  /** The platform behind every brand ("Powered by ..."), not the brand's logo. */
+  readonly platformLogo = input<ShellLogo | null>(null);
 
   readonly collapseToggled = output<void>();
   /** Fired when a destination is chosen, so a drawer can close itself. */

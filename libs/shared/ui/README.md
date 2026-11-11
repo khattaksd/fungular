@@ -53,7 +53,7 @@ import {
 | molecule | `SegmentedControlComponent<T>` | `lib-segmented-control`             | controlled `role="radiogroup"`; options label via `labelKey` or literal `label`          |
 | organism | `ShellComponent`               | `lib-shell`                         | header + sidebar + content; responsive, drawer with focus trap                           |
 | organism | `ShellHeaderComponent`         | `lib-shell-header`                  | logo panel, search, actions, user                                                        |
-| organism | `ShellNavComponent`            | `lib-shell-nav`                     | app-supplied navigation + footer links                                                   |
+| organism | `ShellNavComponent`            | `lib-shell-nav`                     | app-supplied navigation, brand space + tagline, footer links, platform mark              |
 
 ### Cross-cutting
 

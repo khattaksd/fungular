@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { BrandTheme } from '@libs/theme';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/vitest';
 import {
   TranslateLoader,
@@ -16,13 +17,28 @@ class BlankPage {}
 
 class StubTranslateLoader implements TranslateLoader {
   getTranslation(): Observable<TranslationObject> {
-    return of({ SHELL: { GREETING: 'Hi, {{name}}' } });
+    return of({
+      SHELL: {
+        GREETING: 'Hi, {{name}}',
+        POWERED_BY: 'Powered by',
+      },
+    });
   }
 }
 
 const ITEMS: ShellNavItem[] = [
   { id: 'home', labelKey: 'NAV.HOME', icon: 'home', route: '/' },
 ];
+
+const BRAND: BrandTheme = {
+  id: 'solstice',
+  name: 'Solstice',
+  tenantLabel: 'Our Solstice',
+  tagline: 'Sunrise, engineered.',
+  taglineSub: 'A demo brand.',
+  logo: { url: '/logo.svg', alt: 'Solstice' },
+  colors: {},
+};
 
 describe('ShellComponent', () => {
   let spectator: Spectator<ShellComponent>;
@@ -71,24 +87,37 @@ describe('ShellComponent', () => {
 
   beforeEach(() => layout.set('desktop'));
 
-  it('hands an app-supplied logo to the header', () => {
+  it('hands the brand logo to the header', () => {
     spectator = createComponent({
-      props: {
-        navItems: ITEMS,
-        logo: { url: '/fungular.svg', alt: 'fungular' },
-      },
+      props: { navItems: ITEMS, brand: BRAND },
     });
 
     expect(spectator.query('.bar__logo img')).toHaveAttribute(
       'src',
-      '/fungular.svg',
+      '/logo.svg',
     );
   });
 
-  it('renders without a logo when none is supplied', () => {
+  it('renders without a brand while one is loading or has failed to load', () => {
     spectator = createComponent({ props: { navItems: ITEMS } });
 
     expect(spectator.query('.bar__logo img')).toBeNull();
+  });
+
+  it('shows the brand space, tagline and platform mark when given', () => {
+    spectator = createComponent({
+      props: {
+        navItems: ITEMS,
+        brand: BRAND,
+        platformLogo: { url: '/platform.svg', alt: 'fungular' },
+      },
+    });
+
+    expect(spectator.query('.nav__link--static')).toHaveText('Our Solstice');
+    expect(spectator.query('.nav__tagline')).toHaveText(
+      'Sunrise, engineered.',
+    );
+    expect(spectator.query('.nav__powered')).toHaveText('Powered by');
   });
 
   it('projects the routed page into the content area', () => {

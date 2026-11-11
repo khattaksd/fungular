@@ -4,7 +4,7 @@
   [class.shell--drawer-open]="drawerOpen()"
 >
   <lib-shell-header
-    [logo]="logo()"
+    [logo]="brand()?.logo ?? null"
     [userName]="userName()"
     [userAvatarUrl]="userAvatarUrl()"
     [hasUnread]="hasUnread()"
@@ -18,6 +18,10 @@
       [items]="navItems()"
       [footerItems]="footerItems()"
       [collapsed]="collapsed()"
+      [tenantLabel]="brand()?.tenantLabel ?? null"
+      [tagline]="brand()?.tagline ?? null"
+      [taglineSub]="brand()?.taglineSub ?? null"
+      [platformLogo]="platformLogo()"
       (collapseToggled)="toggleCollapsed()"
       (navigated)="closeDrawer(false)"
     />

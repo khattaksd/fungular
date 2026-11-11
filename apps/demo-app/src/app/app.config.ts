@@ -17,7 +17,8 @@ import {
 import { Title } from '@angular/platform-browser';
 import { appRoutes } from './app.routes';
 
-import { environment } from '@libs/environment';
+import { brandPaths, environment } from '@libs/environment';
+import { provideBrandTheme } from '@libs/theme';
 
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStore } from '@ngrx/store';
@@ -67,6 +68,11 @@ export const appConfig: ApplicationConfig = {
 
     // Must come after provideHttpClient(): the i18n loader fetches assets/i18n.
     provideTranslation(),
+
+    // Demo brands, loaded before first render. `?brand=solstice|harbor|meadow`
+    // picks the brand; the default is Solstice. Served from static JSON until a
+    // real branding source exists.
+    provideBrandTheme({ urlFor: brandPaths.byBrand }),
 
     // Devtools ship real code and keep every action in memory. Keep them out of
     // production builds entirely rather than merely switching them to logOnly.

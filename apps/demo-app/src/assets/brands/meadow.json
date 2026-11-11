@@ -1,0 +1,22 @@
+{
+  "id": "meadow",
+  "name": "Meadow",
+  "tenantLabel": "Our Meadow",
+  "tagline": "Green fields, growing fast.",
+  "taglineSub": "A demo brand on the neutral palette.",
+  "logo": {
+    "url": "./assets/brands/meadow-logo.svg",
+    "alt": "Meadow"
+  },
+  "colors": {
+    "brand": "#3f6212",
+    "brand-hover": "#4d7714",
+    "brand-subtle": "#e7efdb",
+    "accent": "#a16207",
+    "link": "#365314",
+    "progress": "#65a30d"
+  },
+  "fonts": {
+    "display": "Inter"
+  }
+}

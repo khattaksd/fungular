@@ -19,7 +19,8 @@
     "UNAVAILABLE": "قريباً",
     "NAV_SECTION": "تنقل",
     "NAV_HOME": "الرئيسية",
-    "NAV_PROFILE": "الملف الشخصي"
+    "NAV_PROFILE": "الملف الشخصي",
+    "POWERED_BY": "مدعوم بواسطة"
   },
   "LANGUAGE_SELECT": {
     "TRIGGER_ARIA": "تغيير اللغة",
@@ -66,6 +67,11 @@
     "FEATURES": "ماذا يوجد بالداخل",
     "FEATURE_MOCK": "واجهة API وهمية على Cloudflare — يعمل التطبيق بدون خادم خلفي.",
     "FEATURE_THEME": "مظهر فاتح/داكن يتبع نظام التشغيل.",
-    "FEATURE_I18N": "ثماني لغات، بما فيها RTL."
+    "FEATURE_I18N": "ثماني لغات، بما فيها RTL.",
+    "BRANDS_LABEL": "علامة تجريبية",
+    "BRAND_SOLSTICE": "سولستيس",
+    "BRAND_HARBOR": "هاربور",
+    "BRAND_MEADOW": "ميدو",
+    "FEATURE_BRANDS": "ثلاث علامات تجريبية تبدّل اللوحة مباشرةً."
   }
 }

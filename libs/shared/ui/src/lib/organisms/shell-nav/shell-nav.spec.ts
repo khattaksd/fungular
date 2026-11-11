@@ -19,6 +19,7 @@ class StubTranslateLoader implements TranslateLoader {
         WORKPLACE: 'Your workplace',
         COLLAPSE: 'Collapse navigation',
         EXPAND: 'Expand navigation',
+        POWERED_BY: 'Powered by',
         UNAVAILABLE: 'Coming soon',
         NAV_ARIA: 'Main navigation',
       },
@@ -105,13 +106,61 @@ describe('ShellNavComponent', () => {
     expect(navigated).toHaveBeenCalledTimes(1);
   });
 
-  it('becomes a rail when collapsed: no section label', () => {
+  it('shows the brand space, tagline and platform mark when given', () => {
     spectator = createComponent({
-      props: { items: ITEMS, collapsed: true },
+      props: {
+        items: ITEMS,
+        tenantLabel: 'Our Solstice',
+        tagline: 'Sunrise, engineered.',
+        taglineSub: 'A demo brand.',
+        platformLogo: { url: '/platform.svg', alt: 'fungular' },
+      },
+    });
+
+    expect(spectator.query('.nav__link--static')).toHaveText('Our Solstice');
+    expect(spectator.query('.nav__tagline')).toHaveText(
+      'Sunrise, engineered.',
+    );
+    expect(spectator.query('.nav__tagline-sub')).toHaveText('A demo brand.');
+    expect(spectator.query('.nav__powered')).toHaveText('Powered by');
+    expect(spectator.query('.nav__powered img')).toHaveAttribute(
+      'alt',
+      'fungular',
+    );
+  });
+
+  it('omits the brand block and tagline when there is none', () => {
+    spectator = createComponent({ props: { items: ITEMS } });
+
+    expect(spectator.query('.nav__link--static')).toBeNull();
+    expect(spectator.query('.nav__tagline')).toBeNull();
+    expect(spectator.query('.nav__powered')).toBeNull();
+  });
+
+  it('omits the sub-line when the tagline has none', () => {
+    spectator = createComponent({
+      props: { items: ITEMS, tagline: 'Sunrise, engineered.' },
+    });
+
+    expect(spectator.query('.nav__tagline')).toBeTruthy();
+    expect(spectator.query('.nav__tagline-sub')).toBeNull();
+  });
+
+  it('becomes a rail when collapsed: no section label, tagline or powered-by text', () => {
+    spectator = createComponent({
+      props: {
+        items: ITEMS,
+        collapsed: true,
+        tagline: 'Sunrise, engineered.',
+        platformLogo: { url: '/platform.svg', alt: 'fungular' },
+      },
     });
 
     expect(spectator.element).toHaveClass('collapsed');
     expect(spectator.query('.nav__section')).toBeNull();
+    expect(spectator.query('.nav__tagline')).toBeNull();
+    expect(spectator.query('.nav__powered span')).toBeNull();
+    expect(spectator.query('.nav__powered img')).toBeTruthy();
   });
 
   it('labels the collapse button for its next action and reports its state', () => {

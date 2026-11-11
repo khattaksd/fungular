@@ -6,10 +6,12 @@ Spectator, Playwright, Storybook — with a **mock API in Cloudflare Pages Funct
 output**, and a **vendor-neutral analytics seam** (PostHog is the first implementation).
 
 > **Deliberately opinionless about domain and design.** No product entity, no LMS/learner
-> concepts, no brand or design-system constraints. The point of fungular is the
-> architecture and the patterns, so you can experiment freely: change the theme,
-> plug in an analytics vendor, deploy it anywhere, build whatever domain you like
-> on top.
+> concepts, no design-system constraints. The theming story is demonstrated with
+> three **fictional demo brands** (**Solstice, Harbor, Meadow** — `?brand=harbor`),
+> a navy peak-and-sunrise mark as the logo, and a light/dark theme that follows
+> your OS. The point of fungular is the architecture and the patterns, so you can
+> experiment freely: change the brand data, plug in an analytics vendor, deploy it
+> anywhere, build whatever domain you like on top.
 
 [![CI](https://github.com/khattaksd/fungular/actions/workflows/ci.yml/badge.svg)](https://github.com/khattaksd/fungular/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -26,6 +28,11 @@ npx nx storybook ui             # http://localhost:4400
 Node `^22.22.3`, `^24.15.0` or `>=26`, as Angular 22 requires, and npm 10.9.8 or later.
 `nvm use` picks up `.nvmrc` (22.23.4, the version CI uses); `.npmrc` makes `npm install`
 fail on anything outside `engines`. No account is needed.
+
+**Demo brands.** Open `http://localhost:4200/?brand=meadow` (or hit the brand
+switcher on the home page) to see the whole palette re-theme. The three brands
+live in `apps/demo-app/src/assets/brands/`; Settings has the OS-synced light/dark
+toggle.
 
 **No backend? The mock API lives in Cloudflare Pages Functions.** `functions/api/[[path]].ts`
 answers `/api/*` with the same `METHOD /path` handlers the app expects — locally via

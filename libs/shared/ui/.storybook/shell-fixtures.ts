@@ -1,4 +1,7 @@
-import type { ShellNavItem } from '../src/lib/organisms/shell-nav/shell-nav';
+import type {
+  ShellLogo,
+  ShellNavItem,
+} from '../src/lib/organisms/shell-nav/shell-nav';
 
 export const NAV_ITEMS: readonly ShellNavItem[] = [
   {
@@ -16,3 +19,9 @@ export const FOOTER_ITEMS: readonly ShellNavItem[] = [
   { id: 'help', labelKey: 'SHELL.HELP', icon: 'life-buoy' },
   { id: 'settings', labelKey: 'SHELL.SETTINGS', icon: 'settings' },
 ];
+
+/** The mark behind every brand ("Powered by ..."): the navy peak-and-sunrise. */
+export const PLATFORM_LOGO: ShellLogo = {
+  url: './assets/logo.svg',
+  alt: 'fungular',
+};

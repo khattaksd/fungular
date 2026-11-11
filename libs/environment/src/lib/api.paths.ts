@@ -5,3 +5,12 @@ export const commonPaths = {
     current: '/api/v1/profile',
   },
 };
+
+/**
+ * Demo brands are static JSON under `assets/brands/`. Relative on purpose (no
+ * leading slash), like the i18n loader, so the app still works when it is served
+ * under a sub-path.
+ */
+export const brandPaths = {
+  byBrand: (brand: string): string => `./assets/brands/${brand}.json`,
+};

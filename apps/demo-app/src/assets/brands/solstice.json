@@ -1,0 +1,22 @@
+{
+  "id": "solstice",
+  "name": "Solstice",
+  "tenantLabel": "Our Solstice",
+  "tagline": "Sunrise, engineered.",
+  "taglineSub": "A demo brand on the neutral palette.",
+  "logo": {
+    "url": "./assets/brands/solstice-logo.svg",
+    "alt": "Solstice"
+  },
+  "colors": {
+    "brand": "#b4531f",
+    "brand-hover": "#c96b33",
+    "brand-subtle": "#f5e4d8",
+    "accent": "#e08a2e",
+    "link": "#a34a1c",
+    "progress": "#c97f2b"
+  },
+  "fonts": {
+    "display": "Inter"
+  }
+}

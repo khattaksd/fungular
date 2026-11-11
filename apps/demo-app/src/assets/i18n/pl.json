@@ -19,7 +19,8 @@
     "UNAVAILABLE": "Wkrótce",
     "NAV_SECTION": "Nawigacja",
     "NAV_HOME": "Strona główna",
-    "NAV_PROFILE": "Profil"
+    "NAV_PROFILE": "Profil",
+    "POWERED_BY": "Obsługiwane przez"
   },
   "LANGUAGE_SELECT": {
     "TRIGGER_ARIA": "Zmień język",
@@ -66,6 +67,11 @@
     "FEATURES": "Co zawiera",
     "FEATURE_MOCK": "Mock API na Cloudflare — aplikacja działa bez backendu.",
     "FEATURE_THEME": "Motyw jasny/ciemny zgodny z systemem operacyjnym.",
-    "FEATURE_I18N": "Osiem języków, w tym RTL."
+    "FEATURE_I18N": "Osiem języków, w tym RTL.",
+    "BRANDS_LABEL": "Marka demo",
+    "BRAND_SOLSTICE": "Solstice",
+    "BRAND_HARBOR": "Harbor",
+    "BRAND_MEADOW": "Meadow",
+    "FEATURE_BRANDS": "Trzy marki demo zmieniają paletę na żywo."
   }
 }

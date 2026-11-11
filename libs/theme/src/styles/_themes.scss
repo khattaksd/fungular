@@ -5,14 +5,12 @@
    this file holds the dark theme. ThemeService toggles both `data-theme`
    and the `.dark` class so Tailwind's `dark:` variant keeps working.
 
-   The dark palette below is gated by `$dark-palette-enabled`. While it is
-   `false` the dark block is not emitted, so dark and light render the same
-   colours. All the plumbing (ThemeService, toggle, data-theme, .dark) keeps
-   working; set the flag to `true` to bring the dark values back — they are the
-   neutral palette's dark equivalents, and can be re-themed later.
+   Brand colours are applied as inline CSS variables on `<html>` (see
+   `brand-theme.ts`), so they win over this stylesheet — they are chosen to read
+   on both themes, while surfaces and text stay theme-controlled.
    ───────────────────────────────────────────── */
 
-$dark-palette-enabled: false;
+$dark-palette-enabled: true;
 
 @if $dark-palette-enabled {
   :root[data-theme='dark'] {
@@ -42,6 +40,11 @@ $dark-palette-enabled: false;
     --color-text-secondary: oklch(70.8% 0 none); /* neutral-400 */
     --color-text-muted: oklch(55.6% 0 none); /* neutral-500 */
     --color-text-inverted: oklch(14.5% 0 none); /* neutral-950 */
+
+    /* ── Accent, link, progress — lightened so they read on dark ── */
+    --color-accent: oklch(86.3% 0 none); /* neutral-300 */
+    --color-link: oklch(92.2% 0 none); /* neutral-200 */
+    --color-progress: oklch(70.8% 0 none); /* neutral-400 */
 
     /* ── Status — the 600 step is too dark to read on a dark surface, so the
      foreground lightens to 400 and the tint becomes a translucent wash

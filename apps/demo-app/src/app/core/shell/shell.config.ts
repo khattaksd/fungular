@@ -1,4 +1,4 @@
-import { ShellNavItem } from '@libs/ui';
+import { ShellLogo, ShellNavItem } from '@libs/ui';
 
 /**
  * Data for the shell. Navigation is supplied by the app so the shell library
@@ -32,6 +32,12 @@ export const FOOTER_ITEMS: readonly ShellNavItem[] = [
     route: '/settings',
   },
 ];
+
+/** The mark behind every brand ("Powered by ..."). The navy peak-and-sunrise. */
+export const PLATFORM_LOGO: ShellLogo = {
+  url: './assets/logo.svg',
+  alt: 'fungular',
+};
 
 /** The signed-in demo user on mock data. */
 export const DEMO_USER = { name: 'Alex' };

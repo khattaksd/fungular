@@ -17,5 +17,13 @@ Notable changes, newest first.
 - Mock API moved into a Cloudflare Pages Function (`functions/api/[[path]].ts`),
   replacing the browser-side interceptor; the e2e suite now runs against the
   production bundle + Functions.
+- Dark mode enabled: the neutral dark palette now actually themes the app
+  (light/dark toggle in Settings follows the OS by default).
+- Runtime demo branding: three fictional brands (Solstice, Harbor, Meadow) as
+  JSON, applied via `BrandThemeService`; `?brand=` at startup, a live switcher
+  on the home page, and a Storybook Brand toolbar. Brand tokens stay on the
+  `--color-*` seam so they read on both themes.
+- fungular mark: a flat navy peak-and-sunrise logo (`assets/logo.svg`) used as
+  favicon, header logo, brand logo and the "Powered by" platform mark.
 - Vendor-neutral analytics seam retained from the source codebase; PostHog
   implementation planned (`libs/shared/analytics-posthog`).

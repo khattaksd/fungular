@@ -19,7 +19,8 @@
     "UNAVAILABLE": "Binnenkort beschikbaar",
     "NAV_SECTION": "Navigeren",
     "NAV_HOME": "Home",
-    "NAV_PROFILE": "Profiel"
+    "NAV_PROFILE": "Profiel",
+    "POWERED_BY": "Mogelijk gemaakt door"
   },
   "LANGUAGE_SELECT": {
     "TRIGGER_ARIA": "Taal wijzigen",
@@ -66,6 +67,11 @@
     "FEATURES": "Wat zit erin",
     "FEATURE_MOCK": "Mock-API op Cloudflare — de app draait zonder backend.",
     "FEATURE_THEME": "Licht/donker-thema dat je besturingssysteem volgt.",
-    "FEATURE_I18N": "Acht talen, inclusief RTL."
+    "FEATURE_I18N": "Acht talen, inclusief RTL.",
+    "BRANDS_LABEL": "Demomerk",
+    "BRAND_SOLSTICE": "Solstice",
+    "BRAND_HARBOR": "Harbor",
+    "BRAND_MEADOW": "Meadow",
+    "FEATURE_BRANDS": "Drie demomerken wisselen live van palet."
   }
 }

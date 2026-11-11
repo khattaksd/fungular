@@ -1,6 +1,7 @@
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideRouter } from '@angular/router';
+import { BRAND_THEME_URL } from '@libs/theme';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/vitest';
 import {
   TranslateLoader,
@@ -27,6 +28,10 @@ describe('App', () => {
       provideRouter([]),
       provideHttpClient(),
       provideHttpClientTesting(),
+      {
+        provide: BRAND_THEME_URL,
+        useValue: (brand: string) => `/mock/${brand}.json`,
+      },
       provideTranslateService({
         loader: [{ provide: TranslateLoader, useClass: StubTranslateLoader }],
         lang: 'en',
