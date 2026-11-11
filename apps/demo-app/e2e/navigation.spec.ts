@@ -63,20 +63,14 @@ test.describe('navigation', () => {
   });
 
   test('sets a translated document title per route', async ({ page }) => {
-    // `page.title()` does not wait. The translated TitleStrategy runs after the
-    // app bootstraps, so the title is still index.html's placeholder for a moment
-    // after `goto` returns.
-    const titleAfterLoad = async (path: string): Promise<string> => {
-      await page.goto(path);
-      await expect(page).not.toHaveTitle('demo-app');
-      return page.title();
-    };
+    // Wait for the exact translated titles rather than a "not the placeholder"
+    // guard: reading page.title() right after goto can race the TitleStrategy.
+    // toHaveTitle retries until the route's own title lands. APP_TITLE is
+    // 'fungular'; the home route has no title so it falls back to that alone.
+    await page.goto('/');
+    await expect(page).toHaveTitle('fungular');
 
-    const home = await titleAfterLoad('/');
-    const settings = await titleAfterLoad('/settings');
-
-    expect(home).not.toBe(settings);
-    // An untranslated title leaks the i18n key itself.
-    expect(settings).not.toMatch(/^[A-Z_.]+$/);
+    await page.goto('/settings');
+    await expect(page).toHaveTitle('Settings · fungular'); // SETTINGS.TITLE
   });
 });

@@ -4,8 +4,9 @@ import { NotFoundPage } from './not-found/not-found';
 
 export const appPagesRoutes: Routes = [
   {
+    // No route title: the home page keeps the app name alone ("fungular")
+    // instead of "fungular · fungular".
     path: '',
-    title: 'HOME.TITLE',
     component: HomePage,
   },
   {

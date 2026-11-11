@@ -3,8 +3,8 @@ import { Title } from '@angular/platform-browser';
 import { RouterStateSnapshot, TitleStrategy } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-/** Appended after the page title, e.g. "Profile · Base App". */
-export const APP_TITLE = 'Base App';
+/** Appended after the page title, e.g. "Profile · fungular". */
+export const APP_TITLE = 'fungular';
 
 /**
  * Treats a route's `title` as an i18n key and keeps `<title>` translated.
