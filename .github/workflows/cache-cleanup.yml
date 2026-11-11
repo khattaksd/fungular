@@ -1,0 +1,33 @@
+name: Cleanup PR caches
+
+# A PR's npm cache is keyed to its own ref and dead the moment the PR closes;
+# GitHub would keep it for 7 more days. Delete it now so the repo's cache list
+# stays dominated by main's entry instead of stale per-PR copies.
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  cleanup:
+    name: Delete this PR's caches
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete caches for the merged ref
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          REF: refs/pull/${{ github.event.pull_request.number }}/merge
+        run: |
+          ids=$(gh cache list --repo "$REPO" --ref "$REF" --limit 100 --json id -q '.[].id')
+          if [ -z "$ids" ]; then
+            echo "No caches for $REF." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          for id in $ids; do
+            gh cache delete "$id" --repo "$REPO"
+            echo "Deleted cache $id ($REF)." >> "$GITHUB_STEP_SUMMARY"
+          done

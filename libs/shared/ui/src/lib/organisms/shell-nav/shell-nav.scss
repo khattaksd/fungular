@@ -1,0 +1,202 @@
+// Colours come from the neutral `--color-*` tokens in @libs/theme, so a future
+// theme layer can restyle the whole shell without touching this file.
+
+:host {
+  display: block;
+  background: var(--color-bg-elevated);
+  border-inline-end: 1px solid var(--color-border);
+  overflow-y: auto;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: var(--space-3);
+  gap: var(--space-1);
+}
+
+.nav__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 32px;
+  padding: 0 var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+:host(.collapsed) .nav__head {
+  justify-content: center;
+}
+
+.nav__section {
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__collapse,
+.nav__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+
+  &:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+}
+
+.nav__collapse {
+  padding: var(--space-1);
+  color: var(--color-text-secondary);
+}
+
+.nav__link {
+  position: relative;
+  padding: var(--space-3);
+
+  lib-icon {
+    color: var(--color-brand);
+  }
+
+  &:hover {
+    background: var(--color-bg-hover);
+  }
+}
+
+.nav__link--active {
+  background: var(--color-brand-subtle);
+  font-weight: var(--font-weight-semibold);
+}
+
+.nav__link--unavailable {
+  opacity: 0.6;
+  cursor: default;
+
+  &:hover {
+    background: transparent;
+  }
+}
+
+.nav__link--static {
+  cursor: default;
+
+  &:hover {
+    background: transparent;
+  }
+}
+
+.nav__label {
+  flex: 1;
+}
+
+.nav__badge {
+  min-width: 22px;
+  padding: 1px 7px;
+  border-radius: var(--radius-full);
+  background: var(--color-brand);
+  color: var(--color-text-on-brand);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+}
+
+.nav__rule {
+  width: 100%;
+  margin: var(--space-3) 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.nav__foot {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  padding-top: var(--space-6);
+}
+
+.nav__tagline {
+  margin: 0 var(--space-2);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+.nav__tagline-sub {
+  margin: var(--space-1) var(--space-2) 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.nav__powered {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: var(--space-4) var(--space-2) 0;
+  font-size: 10px;
+  color: var(--color-text-muted);
+
+  img {
+    height: 20px;
+    width: auto;
+    align-self: flex-start;
+  }
+}
+
+// Collapsed: an icon rail, label beneath each icon.
+:host(.collapsed) {
+  .nav__link {
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-2);
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .nav__label {
+    flex: none;
+  }
+
+  .nav__badge {
+    position: absolute;
+    top: 2px;
+    inset-inline-end: 14px;
+    min-width: 18px;
+    padding: 0 5px;
+    font-size: 10px;
+  }
+
+  .nav__powered {
+    align-items: center;
+    margin-inline: 0;
+  }
+}
+
+// Phone: the sidebar is a drawer, which is either open or closed — there is no rail
+// to collapse to.
+@media (max-width: 600px) {
+  .nav__collapse {
+    display: none;
+  }
+}

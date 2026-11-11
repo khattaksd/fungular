@@ -1,0 +1,3 @@
+name = "fungular"
+compatibility_date = "2025-06-01"
+pages_build_output_dir = "dist/apps/demo-app/browser"

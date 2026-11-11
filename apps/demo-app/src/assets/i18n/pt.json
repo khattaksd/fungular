@@ -1,0 +1,71 @@
+{
+  "DEFAULT_LANGUAGE": "Português",
+  "BACK": "Voltar",
+  "SHELL": {
+    "NAV_ARIA": "Navegação principal",
+    "COLLAPSE": "Recolher navegação",
+    "EXPAND": "Expandir navegação",
+    "OPEN_MENU": "Abrir navegação",
+    "CLOSE_MENU": "Fechar navegação",
+    "SEARCH_PLACEHOLDER": "Comece a digitar para pesquisar…",
+    "SEARCH_ARIA": "Pesquisar",
+    "WORKSPACES_ARIA": "Espaços de trabalho",
+    "NOTIFICATIONS_ARIA": "Notificações",
+    "NOTIFICATIONS_UNREAD": "Você tem notificações não lidas",
+    "ASSISTANT_ARIA": "Perguntar ao assistente",
+    "GREETING": "Olá, {{name}}",
+    "HELP": "Ajuda e suporte",
+    "SETTINGS": "Configurações",
+    "UNAVAILABLE": "Em breve",
+    "NAV_SECTION": "Navegar",
+    "NAV_HOME": "Início",
+    "NAV_PROFILE": "Perfil"
+  },
+  "LANGUAGE_SELECT": {
+    "TRIGGER_ARIA": "Alterar idioma",
+    "LIST_ARIA": "Idioma"
+  },
+  "PROFILE": {
+    "TITLE": "Perfil",
+    "BACK_HOME": "Voltar ao início",
+    "LOADING": "Carregando perfil...",
+    "ERROR": "Não foi possível carregar o perfil",
+    "RETRY": "Tentar novamente"
+  },
+  "USER_INFO": {
+    "USER_ID": "ID do usuário"
+  },
+  "NOT_FOUND": {
+    "TITLE": "Página não encontrada",
+    "DESCRIPTION": "A página que você procura não existe ou foi movida.",
+    "BACK_HOME": "Voltar ao início"
+  },
+  "THEME": {
+    "SWITCH_TO_DARK": "Mudar para o tema escuro",
+    "SWITCH_TO_LIGHT": "Mudar para o tema claro"
+  },
+  "SETTINGS": {
+    "TITLE": "Definições",
+    "LEAD": "As preferências ficam guardadas neste dispositivo. Nada é enviado para um servidor.",
+    "THEME": "Tema",
+    "THEME_DESC": "Sistema segue a definição do seu sistema operativo.",
+    "THEME_LIGHT": "Claro",
+    "THEME_DARK": "Escuro",
+    "THEME_SYSTEM": "Sistema",
+    "LANGUAGE": "Idioma",
+    "LANGUAGE_DESC": "Aplica-se imediatamente a toda a aplicação.",
+    "REDUCE_MOTION": "Reduzir movimento",
+    "REDUCE_MOTION_DESC": "Minimiza transições e efeitos animados."
+  },
+  "HOME": {
+    "TITLE": "fungular",
+    "KICKER": "Um playground Angular neutro",
+    "LEAD": "Um esqueleto genérico de monorepo Angular 22: API simulada no navegador, saída pronta para hospedagem estática, analytics independente de fornecedor e arquitetura imposta por lint — livre para experimentar.",
+    "CTA_PROFILE": "Abrir perfil",
+    "CTA_SETTINGS": "Personalizar definições",
+    "FEATURES": "O que inclui",
+    "FEATURE_MOCK": "API simulada na Cloudflare — o app roda sem backend.",
+    "FEATURE_THEME": "Tema claro/escuro que segue o sistema operativo.",
+    "FEATURE_I18N": "Oito idiomas, incluindo RTL."
+  }
+}

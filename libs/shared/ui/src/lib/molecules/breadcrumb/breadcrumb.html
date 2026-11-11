@@ -1,0 +1,6 @@
+<lib-icon name="map-pin" size="sm" />
+<ol class="crumbs">
+  @for (item of items(); track $index; let last = $last) {
+  <li [attr.aria-current]="last ? 'location' : null">{{ item }}</li>
+  }
+</ol>

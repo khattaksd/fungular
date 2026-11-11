@@ -1,0 +1,4 @@
+# Cloudflare Pages SPA fallback: every unknown path serves the app shell, so
+# deep links like /profile load and the router resolves them client-side.
+# Pages Functions are matched before these rules, so /api/* is unaffected.
+/* /index.html 200

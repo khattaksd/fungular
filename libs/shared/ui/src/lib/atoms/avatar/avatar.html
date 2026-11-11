@@ -1,0 +1,5 @@
+@if (src(); as url) {
+<img class="avatar__image" [src]="url" alt="" />
+} @else {
+<span class="avatar__initials">{{ initials() }}</span>
+}

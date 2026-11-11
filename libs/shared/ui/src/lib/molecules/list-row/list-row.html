@@ -1,0 +1,21 @@
+<span class="row__tile"><lib-icon [name]="icon()" size="md" /></span>
+<div class="row__text">
+  <p class="row__title">{{ heading() }}</p>
+  @if (meta(); as text) {
+  <p class="row__meta">{{ text }}</p>
+  }
+</div>
+<div class="row__status"><ng-content select="[row-status]" /></div>
+@if (route(); as target) {
+<a
+  libButton
+  variant="tonal"
+  size="sm"
+  iconOnly
+  class="row__go"
+  [routerLink]="target"
+  [attr.aria-label]="heading()"
+>
+  <lib-icon name="arrow-right" size="sm" />
+</a>
+}

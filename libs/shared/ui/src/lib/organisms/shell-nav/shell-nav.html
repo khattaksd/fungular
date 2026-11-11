@@ -1,0 +1,79 @@
+<ng-template #list let-entries>
+  <ul class="nav__list">
+    @for (item of entries; track item.id) {
+    <li>
+      @if (item.route; as route) {
+      <a
+        class="nav__link"
+        [routerLink]="route"
+        routerLinkActive="nav__link--active"
+        ariaCurrentWhenActive="page"
+        [routerLinkActiveOptions]="{
+          paths: item.exact ? 'exact' : 'subset',
+          queryParams: 'ignored',
+          fragment: 'ignored',
+          matrixParams: 'ignored',
+        }"
+        (click)="navigated.emit()"
+      >
+        <ng-container
+          [ngTemplateOutlet]="content"
+          [ngTemplateOutletContext]="{ $implicit: item }"
+        />
+      </a>
+      } @else {
+      <span
+        class="nav__link nav__link--unavailable"
+        aria-disabled="true"
+        [attr.title]="'SHELL.UNAVAILABLE' | translate"
+      >
+        <ng-container
+          [ngTemplateOutlet]="content"
+          [ngTemplateOutletContext]="{ $implicit: item }"
+        />
+      </span>
+      }
+    </li>
+    }
+  </ul>
+</ng-template>
+
+<ng-template #content let-item>
+  <lib-icon [name]="item.icon" size="md" />
+  <span class="nav__label">{{ item.labelKey | translate }}</span>
+  @if (item.badge) {
+  <span class="nav__badge">{{ item.badge }}</span>
+  }
+</ng-template>
+
+<nav class="nav" [attr.aria-label]="'SHELL.NAV_ARIA' | translate">
+  <div class="nav__head">
+    @if (!collapsed()) {
+    <span class="nav__section">{{ 'SHELL.NAV_SECTION' | translate }}</span>
+    }
+    <button
+      type="button"
+      class="nav__collapse"
+      [attr.aria-label]="
+        (collapsed() ? 'SHELL.EXPAND' : 'SHELL.COLLAPSE') | translate
+      "
+      [attr.aria-expanded]="!collapsed()"
+      (click)="collapseToggled.emit()"
+    >
+      <lib-icon name="panel-left" size="sm" />
+    </button>
+  </div>
+
+  <ng-container
+    [ngTemplateOutlet]="list"
+    [ngTemplateOutletContext]="{ $implicit: items() }"
+  />
+
+  <div class="nav__foot">
+    <hr class="nav__rule" />
+    <ng-container
+      [ngTemplateOutlet]="list"
+      [ngTemplateOutletContext]="{ $implicit: footerItems() }"
+    />
+  </div>
+</nav>

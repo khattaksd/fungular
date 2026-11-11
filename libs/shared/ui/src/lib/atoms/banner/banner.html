@@ -1,0 +1,16 @@
+<div class="banner__head">
+  <lib-icon [name]="icon()" size="md" class="banner__icon" />
+  <p class="banner__heading">{{ heading() }}</p>
+  @if (dismissible()) {
+  <button
+    type="button"
+    class="banner__dismiss"
+    [attr.aria-label]="dismissLabel()"
+    (click)="dismissed.emit()"
+  >
+    <lib-icon name="close-circle" size="md" />
+  </button>
+  }
+</div>
+<div class="banner__body"><ng-content /></div>
+<div class="banner__actions"><ng-content select="[banner-actions]" /></div>

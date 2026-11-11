@@ -1,0 +1,8 @@
+{
+  "name": "environment",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/environment/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": ["scope:environment-lib"]
+}

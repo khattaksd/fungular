@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-card);
+  color: var(--color-text-primary);
+}
+
+.banner__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.banner__icon {
+  color: var(--color-accent);
+}
+
+.banner__heading {
+  flex: 1;
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.banner__dismiss {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-brand);
+  cursor: pointer;
+}
+
+.banner__dismiss:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: var(--radius-full);
+}
+
+.banner__body {
+  margin-block-start: var(--space-3);
+}
+
+.banner__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-block-start: var(--space-4);
+}
+
+.banner__actions:empty {
+  display: none;
+}

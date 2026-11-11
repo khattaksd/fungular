@@ -1,0 +1,71 @@
+{
+  "DEFAULT_LANGUAGE": "Dutch",
+  "BACK": "Terug",
+  "SHELL": {
+    "NAV_ARIA": "Hoofdnavigatie",
+    "COLLAPSE": "Navigatie samenvouwen",
+    "EXPAND": "Navigatie uitvouwen",
+    "OPEN_MENU": "Navigatie openen",
+    "CLOSE_MENU": "Navigatie sluiten",
+    "SEARCH_PLACEHOLDER": "Begin met typen om te zoeken…",
+    "SEARCH_ARIA": "Zoeken",
+    "WORKSPACES_ARIA": "Werkruimtes",
+    "NOTIFICATIONS_ARIA": "Meldingen",
+    "NOTIFICATIONS_UNREAD": "U heeft ongelezen meldingen",
+    "ASSISTANT_ARIA": "Vraag het aan de assistent",
+    "GREETING": "Hoi, {{name}}",
+    "HELP": "Help en ondersteuning",
+    "SETTINGS": "Instellingen",
+    "UNAVAILABLE": "Binnenkort beschikbaar",
+    "NAV_SECTION": "Navigeren",
+    "NAV_HOME": "Home",
+    "NAV_PROFILE": "Profiel"
+  },
+  "LANGUAGE_SELECT": {
+    "TRIGGER_ARIA": "Taal wijzigen",
+    "LIST_ARIA": "Taal"
+  },
+  "PROFILE": {
+    "TITLE": "Profiel",
+    "BACK_HOME": "Terug naar Home",
+    "LOADING": "Profiel laden...",
+    "ERROR": "Kan het profiel niet laden",
+    "RETRY": "Opnieuw proberen"
+  },
+  "USER_INFO": {
+    "USER_ID": "Gebruikers-ID"
+  },
+  "NOT_FOUND": {
+    "TITLE": "Pagina niet gevonden",
+    "DESCRIPTION": "De pagina die je zoekt bestaat niet of is verplaatst.",
+    "BACK_HOME": "Terug naar home"
+  },
+  "THEME": {
+    "SWITCH_TO_DARK": "Schakel naar donker thema",
+    "SWITCH_TO_LIGHT": "Schakel naar licht thema"
+  },
+  "SETTINGS": {
+    "TITLE": "Instellingen",
+    "LEAD": "Voorkeuren worden op dit apparaat bewaard. Er wordt niets naar een server gestuurd.",
+    "THEME": "Thema",
+    "THEME_DESC": "Systeem volgt de instelling van je besturingssysteem.",
+    "THEME_LIGHT": "Licht",
+    "THEME_DARK": "Donker",
+    "THEME_SYSTEM": "Systeem",
+    "LANGUAGE": "Taal",
+    "LANGUAGE_DESC": "Wordt meteen in de hele applicatie toegepast.",
+    "REDUCE_MOTION": "Beweging beperken",
+    "REDUCE_MOTION_DESC": "Beperkt overgangen en geanimeerde effecten."
+  },
+  "HOME": {
+    "TITLE": "fungular",
+    "KICKER": "Een neutrale Angular-speeltuin",
+    "LEAD": "Een generiek Angular 22 monorepo-skelet: mock-API in de browser, statisch-hosting-ready output, leveranciersonafhankelijke analytics en een door lint afgedwongen architectuur — vrij om mee te experimenteren.",
+    "CTA_PROFILE": "Profiel openen",
+    "CTA_SETTINGS": "Instellingen aanpassen",
+    "FEATURES": "Wat zit erin",
+    "FEATURE_MOCK": "Mock-API op Cloudflare — de app draait zonder backend.",
+    "FEATURE_THEME": "Licht/donker-thema dat je besturingssysteem volgt.",
+    "FEATURE_I18N": "Acht talen, inclusief RTL."
+  }
+}

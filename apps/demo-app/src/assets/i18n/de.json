@@ -1,0 +1,71 @@
+{
+  "DEFAULT_LANGUAGE": "Deutsch",
+  "BACK": "Zurück",
+  "SHELL": {
+    "NAV_ARIA": "Hauptnavigation",
+    "COLLAPSE": "Navigation einklappen",
+    "EXPAND": "Navigation ausklappen",
+    "OPEN_MENU": "Navigation öffnen",
+    "CLOSE_MENU": "Navigation schließen",
+    "SEARCH_PLACEHOLDER": "Tippen, um zu suchen…",
+    "SEARCH_ARIA": "Suche",
+    "WORKSPACES_ARIA": "Arbeitsbereiche",
+    "NOTIFICATIONS_ARIA": "Benachrichtigungen",
+    "NOTIFICATIONS_UNREAD": "Sie haben ungelesene Benachrichtigungen",
+    "ASSISTANT_ARIA": "Assistenten fragen",
+    "GREETING": "Hallo, {{name}}",
+    "HELP": "Hilfe & Support",
+    "SETTINGS": "Einstellungen",
+    "UNAVAILABLE": "Demnächst verfügbar",
+    "NAV_SECTION": "Navigation",
+    "NAV_HOME": "Start",
+    "NAV_PROFILE": "Profil"
+  },
+  "LANGUAGE_SELECT": {
+    "TRIGGER_ARIA": "Sprache ändern",
+    "LIST_ARIA": "Sprache"
+  },
+  "PROFILE": {
+    "TITLE": "Profil",
+    "BACK_HOME": "Zurück zur Startseite",
+    "LOADING": "Profil wird geladen...",
+    "ERROR": "Das Profil konnte nicht geladen werden",
+    "RETRY": "Erneut versuchen"
+  },
+  "USER_INFO": {
+    "USER_ID": "Benutzer-ID"
+  },
+  "NOT_FOUND": {
+    "TITLE": "Seite nicht gefunden",
+    "DESCRIPTION": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "BACK_HOME": "Zurück zur Startseite"
+  },
+  "THEME": {
+    "SWITCH_TO_DARK": "Zum dunklen Design wechseln",
+    "SWITCH_TO_LIGHT": "Zum hellen Design wechseln"
+  },
+  "SETTINGS": {
+    "TITLE": "Einstellungen",
+    "LEAD": "Einstellungen werden auf diesem Gerät gespeichert. Nichts wird an einen Server gesendet.",
+    "THEME": "Design",
+    "THEME_DESC": "System folgt der Einstellung Ihres Betriebssystems.",
+    "THEME_LIGHT": "Hell",
+    "THEME_DARK": "Dunkel",
+    "THEME_SYSTEM": "System",
+    "LANGUAGE": "Sprache",
+    "LANGUAGE_DESC": "Wird sofort in der gesamten Anwendung angewendet.",
+    "REDUCE_MOTION": "Bewegung reduzieren",
+    "REDUCE_MOTION_DESC": "Minimiert Übergänge und animierte Effekte."
+  },
+  "HOME": {
+    "TITLE": "fungular",
+    "KICKER": "Ein neutrales Angular-Playground",
+    "LEAD": "Ein generisches Angular-22-Monorepo-Gerüst: Mock-API im Browser, statisches Hosting, anbieterneutrale Analytics und eine per Lint durchgesetzte Architektur – frei zum Experimentieren.",
+    "CTA_PROFILE": "Profil öffnen",
+    "CTA_SETTINGS": "Einstellungen anpassen",
+    "FEATURES": "Was drinsteckt",
+    "FEATURE_MOCK": "Mock-API auf Cloudflare — die App läuft ohne Backend.",
+    "FEATURE_THEME": "Helles/dunkles Design, das dem Betriebssystem folgt.",
+    "FEATURE_I18N": "Acht Sprachen, inklusive RTL."
+  }
+}

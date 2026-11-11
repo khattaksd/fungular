@@ -1,0 +1,34 @@
+<div
+  class="shell"
+  [class.shell--collapsed]="collapsed()"
+  [class.shell--drawer-open]="drawerOpen()"
+>
+  <lib-shell-header
+    [logo]="logo()"
+    [userName]="userName()"
+    [userAvatarUrl]="userAvatarUrl()"
+    [hasUnread]="hasUnread()"
+    [menuOpen]="drawerOpen()"
+    (menuToggled)="toggleDrawer()"
+  />
+
+  <div class="shell__body">
+    <lib-shell-nav
+      class="shell__nav"
+      [items]="navItems()"
+      [footerItems]="footerItems()"
+      [collapsed]="collapsed()"
+      (collapseToggled)="toggleCollapsed()"
+      (navigated)="closeDrawer(false)"
+    />
+
+    @if (drawerOpen()) {
+    <div class="shell__scrim" aria-hidden="true" (click)="closeDrawer()"></div>
+    }
+
+    <!-- A div, not <main>: the routed pages bring their own <main> landmark. -->
+    <div class="shell__content" [attr.inert]="drawerOpen() ? '' : null">
+      <ng-content />
+    </div>
+  </div>
+</div>

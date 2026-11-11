@@ -1,0 +1,71 @@
+{
+  "DEFAULT_LANGUAGE": "العربية",
+  "BACK": "رجوع",
+  "SHELL": {
+    "NAV_ARIA": "التنقل الرئيسي",
+    "COLLAPSE": "طيّ التنقل",
+    "EXPAND": "توسيع التنقل",
+    "OPEN_MENU": "فتح التنقل",
+    "CLOSE_MENU": "إغلاق التنقل",
+    "SEARCH_PLACEHOLDER": "ابدأ الكتابة للبحث…",
+    "SEARCH_ARIA": "بحث",
+    "WORKSPACES_ARIA": "مساحات العمل",
+    "NOTIFICATIONS_ARIA": "الإشعارات",
+    "NOTIFICATIONS_UNREAD": "لديك إشعارات غير مقروءة",
+    "ASSISTANT_ARIA": "اسأل المساعد",
+    "GREETING": "مرحباً، {{name}}",
+    "HELP": "المساعدة والدعم",
+    "SETTINGS": "الإعدادات",
+    "UNAVAILABLE": "قريباً",
+    "NAV_SECTION": "تنقل",
+    "NAV_HOME": "الرئيسية",
+    "NAV_PROFILE": "الملف الشخصي"
+  },
+  "LANGUAGE_SELECT": {
+    "TRIGGER_ARIA": "تغيير اللغة",
+    "LIST_ARIA": "اللغة"
+  },
+  "PROFILE": {
+    "TITLE": "الملف الشخصي",
+    "BACK_HOME": "العودة إلى الرئيسية",
+    "LOADING": "جارٍ تحميل الملف الشخصي...",
+    "ERROR": "تعذّر تحميل الملف الشخصي",
+    "RETRY": "حاول مرة أخرى"
+  },
+  "USER_INFO": {
+    "USER_ID": "معرّف المستخدم"
+  },
+  "NOT_FOUND": {
+    "TITLE": "الصفحة غير موجودة",
+    "DESCRIPTION": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "BACK_HOME": "العودة إلى الرئيسية"
+  },
+  "THEME": {
+    "SWITCH_TO_DARK": "التبديل إلى المظهر الداكن",
+    "SWITCH_TO_LIGHT": "التبديل إلى المظهر الفاتح"
+  },
+  "SETTINGS": {
+    "TITLE": "الإعدادات",
+    "LEAD": "تُحفظ التفضيلات على هذا الجهاز. لا يُرسل أي شيء إلى خادم.",
+    "THEME": "المظهر",
+    "THEME_DESC": "النظام يتبع إعداد نظام التشغيل لديك.",
+    "THEME_LIGHT": "فاتح",
+    "THEME_DARK": "داكن",
+    "THEME_SYSTEM": "النظام",
+    "LANGUAGE": "اللغة",
+    "LANGUAGE_DESC": "يُطبَّق فوراً على التطبيق بأكمله.",
+    "REDUCE_MOTION": "تقليل الحركة",
+    "REDUCE_MOTION_DESC": "يقلل الانتقالات والتأثيرات المتحركة."
+  },
+  "HOME": {
+    "TITLE": "fungular",
+    "KICKER": "منصة تجريبية محايدة لـ Angular",
+    "LEAD": "هيكل عام لمراقبة Angular 22: واجهة API وهمية في المتصفح، مخرجات جاهزة للاستضافة الثابتة، تحليلات محايدة للبائع، وهندسة تفرضها قواعد الفحص — حر للتجربة.",
+    "CTA_PROFILE": "افتح الملف الشخصي",
+    "CTA_SETTINGS": "تخصيص الإعدادات",
+    "FEATURES": "ماذا يوجد بالداخل",
+    "FEATURE_MOCK": "واجهة API وهمية على Cloudflare — يعمل التطبيق بدون خادم خلفي.",
+    "FEATURE_THEME": "مظهر فاتح/داكن يتبع نظام التشغيل.",
+    "FEATURE_I18N": "ثماني لغات، بما فيها RTL."
+  }
+}

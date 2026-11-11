@@ -1,0 +1,77 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '05:00'
+      timezone: America/Chicago
+    open-pull-requests-limit: 5
+    labels: [dependencies]
+    commit-message:
+      prefix: 'chore(deps)'
+      prefix-development: 'chore(deps-dev)'
+    cooldown:
+      default-days: 3
+    ignore:
+      # TypeScript majors move only together with Angular.
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
+      # @types/node majors follow the oldest Node we support (22), not the newest release.
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+    groups:
+      # A package joins the first group it matches, so angular must stay before lint-and-types.
+      angular:
+        patterns:
+          [
+            '@angular/*',
+            '@angular-devkit/*',
+            '@schematics/*',
+            'angular-eslint',
+            'zone.js',
+          ]
+      nx:
+        patterns: ['nx', '@nx/*']
+      ngrx:
+        patterns: ['@ngrx/*']
+      # Analog and Vite are the Storybook framework's engine, so they move with it.
+      storybook:
+        patterns: ['storybook', '@storybook/*', '@analogjs/*', 'vite']
+      # Vitest and its plugins must share a version, so majors move together.
+      vitest:
+        patterns: ['vitest', '@vitest/*']
+      # ESLint core and its @eslint/* packages pair by major version, so majors move together.
+      eslint:
+        patterns: ['eslint', '@eslint/*']
+      test-tooling:
+        patterns:
+          [
+            'jsdom',
+            '@ngneat/spectator',
+            '@playwright/test',
+            'playwright',
+            'playwright-core',
+          ]
+        update-types: [minor, patch]
+      lint-and-types:
+        patterns:
+          [
+            '@types/*',
+            'eslint-*',
+            'prettier',
+            'typescript-eslint',
+            '@typescript-eslint/*',
+          ]
+        update-types: [minor, patch]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '05:00'
+      timezone: America/Chicago
+    labels: [dependencies]
+    commit-message:
+      prefix: ci

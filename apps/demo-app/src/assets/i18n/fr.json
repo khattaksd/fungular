@@ -1,0 +1,71 @@
+{
+  "DEFAULT_LANGUAGE": "French",
+  "BACK": "Retour",
+  "SHELL": {
+    "NAV_ARIA": "Navigation principale",
+    "COLLAPSE": "Réduire la navigation",
+    "EXPAND": "Développer la navigation",
+    "OPEN_MENU": "Ouvrir la navigation",
+    "CLOSE_MENU": "Fermer la navigation",
+    "SEARCH_PLACEHOLDER": "Commencez à saisir pour rechercher…",
+    "SEARCH_ARIA": "Rechercher",
+    "WORKSPACES_ARIA": "Espaces de travail",
+    "NOTIFICATIONS_ARIA": "Notifications",
+    "NOTIFICATIONS_UNREAD": "Vous avez des notifications non lues",
+    "ASSISTANT_ARIA": "Demander à l'assistant",
+    "GREETING": "Bonjour, {{name}}",
+    "HELP": "Aide et assistance",
+    "SETTINGS": "Paramètres",
+    "UNAVAILABLE": "Bientôt disponible",
+    "NAV_SECTION": "Naviguer",
+    "NAV_HOME": "Accueil",
+    "NAV_PROFILE": "Profil"
+  },
+  "LANGUAGE_SELECT": {
+    "TRIGGER_ARIA": "Changer de langue",
+    "LIST_ARIA": "Langue"
+  },
+  "PROFILE": {
+    "TITLE": "Profil",
+    "BACK_HOME": "Retour à l'accueil",
+    "LOADING": "Chargement du profil...",
+    "ERROR": "Impossible de charger le profil",
+    "RETRY": "Réessayer"
+  },
+  "USER_INFO": {
+    "USER_ID": "ID utilisateur"
+  },
+  "NOT_FOUND": {
+    "TITLE": "Page introuvable",
+    "DESCRIPTION": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "BACK_HOME": "Retour à l'accueil"
+  },
+  "THEME": {
+    "SWITCH_TO_DARK": "Passer au thème sombre",
+    "SWITCH_TO_LIGHT": "Passer au thème clair"
+  },
+  "SETTINGS": {
+    "TITLE": "Paramètres",
+    "LEAD": "Les préférences sont enregistrées sur cet appareil. Rien n’est envoyé à un serveur.",
+    "THEME": "Thème",
+    "THEME_DESC": "Système suit le réglage de votre système d’exploitation.",
+    "THEME_LIGHT": "Clair",
+    "THEME_DARK": "Sombre",
+    "THEME_SYSTEM": "Système",
+    "LANGUAGE": "Langue",
+    "LANGUAGE_DESC": "S’applique immédiatement à toute l’application.",
+    "REDUCE_MOTION": "Réduire les animations",
+    "REDUCE_MOTION_DESC": "Limite les transitions et les effets animés."
+  },
+  "HOME": {
+    "TITLE": "fungular",
+    "KICKER": "Un playground Angular neutre",
+    "LEAD": "Un squelette de monorepo Angular 22 générique : API simulée dans le navigateur, sortie prête pour l’hébergement statique, analytics indépendant du fournisseur et architecture appliquée par le lint — libre d’expérimenter.",
+    "CTA_PROFILE": "Ouvrir le profil",
+    "CTA_SETTINGS": "Personnaliser les réglages",
+    "FEATURES": "Ce qu’il contient",
+    "FEATURE_MOCK": "API simulée sur Cloudflare — l’app fonctionne sans backend.",
+    "FEATURE_THEME": "Thème clair/sombre qui suit votre système.",
+    "FEATURE_I18N": "Huit langues, RTL inclus."
+  }
+}

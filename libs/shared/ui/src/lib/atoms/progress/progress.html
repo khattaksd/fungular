@@ -1,0 +1,18 @@
+@if (caption() || showValue()) {
+<div class="progress__meta">
+  <span>{{ caption() }}</span>
+  @if (showValue()) {
+  <span>{{ percent() }}%</span>
+  }
+</div>
+}
+<div
+  class="progress__track"
+  role="progressbar"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  [attr.aria-valuenow]="percent()"
+  [attr.aria-label]="label()"
+>
+  <div class="progress__fill" [style.width.%]="percent()"></div>
+</div>

@@ -1,0 +1,96 @@
+// The design's widths: the header logo panel and the sidebar share one variable, so
+// they stay aligned whether the sidebar is open (256px) or an icon rail (128px).
+
+:host {
+  display: block;
+}
+
+.shell {
+  --shell-sidebar-width: 256px;
+  --shell-header-height: 68px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--color-bg-base);
+}
+
+.shell--collapsed {
+  --shell-sidebar-width: 128px;
+}
+
+.shell__body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.shell__nav {
+  position: sticky;
+  top: var(--shell-header-height);
+  align-self: flex-start;
+  flex: none;
+  width: var(--shell-sidebar-width);
+  // Viewport height, so the footer sits at the bottom of the screen and the list
+  // scrolls inside the sidebar instead of with the page.
+  height: calc(100vh - var(--shell-header-height));
+  height: calc(100dvh - var(--shell-header-height));
+}
+
+lib-shell-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}
+
+.shell__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.shell__scrim {
+  display: none;
+}
+
+// Phone: the sidebar leaves the flow and slides in over the page.
+@media (max-width: 600px) {
+  .shell {
+    --shell-sidebar-width: 256px;
+    // Logo/actions row (64px) + search row (44px) + the divider between them.
+    --shell-header-height: 109px;
+  }
+
+  .shell__nav {
+    position: fixed;
+    height: auto;
+    align-self: auto;
+    inset-block: var(--shell-header-height) 0;
+    inset-inline-start: 0;
+    z-index: var(--z-fixed);
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition:
+      transform var(--transition-base),
+      visibility var(--transition-base);
+  }
+
+  :host-context([dir='rtl']) .shell__nav {
+    transform: translateX(100%);
+  }
+
+  .shell--drawer-open .shell__nav {
+    transform: none;
+    visibility: visible;
+    // Visible at once so focus can move in; only closing waits for the slide.
+    transition:
+      transform var(--transition-base),
+      visibility 0s;
+  }
+
+  .shell--drawer-open .shell__scrim {
+    display: block;
+    position: fixed;
+    inset: var(--shell-header-height) 0 0;
+    z-index: var(--z-sticky);
+    background: var(--color-overlay);
+  }
+}

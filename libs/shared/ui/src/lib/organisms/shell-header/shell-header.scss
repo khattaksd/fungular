@@ -1,0 +1,185 @@
+// The logo panel is exactly as wide as the sidebar below it (--shell-sidebar-width,
+// set by the shell), so the divider lines up in the expanded and collapsed states.
+
+:host {
+  display: block;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  height: var(--shell-header-height, 68px);
+  background: var(--color-bg-elevated);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.bar__logo {
+  display: flex;
+  align-items: center;
+  flex: none;
+  width: var(--shell-sidebar-width, 256px);
+  height: 100%;
+  padding: 0 var(--space-4);
+  border-inline-end: 1px solid var(--color-border);
+}
+
+.bar__logo-image {
+  max-width: 100%;
+  max-height: 36px;
+  object-fit: contain;
+}
+
+.bar__search {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: var(--space-3);
+  min-width: 0;
+  padding: 0 var(--space-6);
+  color: var(--color-brand);
+
+  input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    font: inherit;
+    font-size: var(--font-size-sm);
+
+    &::placeholder {
+      color: var(--color-text-muted);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-brand);
+      outline-offset: 4px;
+      border-radius: var(--radius-sm);
+    }
+  }
+}
+
+.bar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-6);
+}
+
+.bar__icon,
+.bar__user {
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-brand);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+}
+
+.bar__icon {
+  position: relative;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.bar__assistant {
+  background: color-mix(in oklab, var(--color-accent) 14%, transparent);
+  color: var(--color-accent);
+}
+
+.bar__dot {
+  position: absolute;
+  top: 8px;
+  inset-inline-end: 9px;
+  width: 9px;
+  height: 9px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+}
+
+.bar__user {
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+}
+
+.bar__greeting {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.bar__menu {
+  display: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+// Tablet and below: the name is hidden visually but stays in the DOM, so the link
+// keeps "Hi, Dana" as its accessible name.
+@media (max-width: 1023px) {
+  .bar__greeting {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+// Phone: the sidebar becomes a drawer, and the bar wraps — logo and actions on the
+// first row, search full width on the second. (The design shows no phone header,
+// so this is our choice.) The shell sets --shell-header-height to the combined
+// height so the drawer and sticky sidebar still line up.
+@media (max-width: 600px) {
+  .bar {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .bar__menu {
+    display: inline-flex;
+  }
+
+  .bar__logo {
+    flex: 1;
+    width: auto;
+    height: var(--shell-header-row, 64px);
+    gap: var(--space-2);
+    padding: 0 var(--space-2);
+    border-inline-end: 0;
+  }
+
+  .bar__actions {
+    height: var(--shell-header-row, 64px);
+    padding: 0 var(--space-2);
+  }
+
+  .bar__search {
+    order: 3;
+    flex: 1 0 100%;
+    height: 44px;
+    padding: 0 var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  // The placeholder action is the first to go on a narrow row.
+  .bar__workspaces {
+    display: none;
+  }
+}

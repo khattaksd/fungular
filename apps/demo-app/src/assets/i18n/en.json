@@ -1,0 +1,71 @@
+{
+  "DEFAULT_LANGUAGE": "English",
+  "BACK": "Back",
+  "SHELL": {
+    "NAV_ARIA": "Main navigation",
+    "COLLAPSE": "Collapse navigation",
+    "EXPAND": "Expand navigation",
+    "OPEN_MENU": "Open navigation",
+    "CLOSE_MENU": "Close navigation",
+    "SEARCH_PLACEHOLDER": "Start typing to search…",
+    "SEARCH_ARIA": "Search",
+    "WORKSPACES_ARIA": "Workspaces",
+    "NOTIFICATIONS_ARIA": "Notifications",
+    "NOTIFICATIONS_UNREAD": "You have unread notifications",
+    "ASSISTANT_ARIA": "Ask Assistant",
+    "GREETING": "Hi, {{name}}",
+    "HELP": "Help & support",
+    "SETTINGS": "Settings",
+    "UNAVAILABLE": "Coming soon",
+    "NAV_SECTION": "Navigate",
+    "NAV_HOME": "Home",
+    "NAV_PROFILE": "Profile"
+  },
+  "LANGUAGE_SELECT": {
+    "TRIGGER_ARIA": "Change language",
+    "LIST_ARIA": "Language"
+  },
+  "PROFILE": {
+    "TITLE": "Profile",
+    "BACK_HOME": "Back to Home",
+    "LOADING": "Loading profile...",
+    "ERROR": "Could not load the profile",
+    "RETRY": "Try again"
+  },
+  "USER_INFO": {
+    "USER_ID": "User ID"
+  },
+  "NOT_FOUND": {
+    "TITLE": "Page not found",
+    "DESCRIPTION": "The page you are looking for does not exist or has been moved.",
+    "BACK_HOME": "Back to home"
+  },
+  "THEME": {
+    "SWITCH_TO_DARK": "Switch to dark theme",
+    "SWITCH_TO_LIGHT": "Switch to light theme"
+  },
+  "SETTINGS": {
+    "TITLE": "Settings",
+    "LEAD": "Preferences are stored on this device. Nothing here is sent to a server.",
+    "THEME": "Theme",
+    "THEME_DESC": "System follows your operating system setting.",
+    "THEME_LIGHT": "Light",
+    "THEME_DARK": "Dark",
+    "THEME_SYSTEM": "System",
+    "LANGUAGE": "Language",
+    "LANGUAGE_DESC": "Applies immediately across the whole application.",
+    "REDUCE_MOTION": "Reduce motion",
+    "REDUCE_MOTION_DESC": "Minimises transitions and animated effects."
+  },
+  "HOME": {
+    "TITLE": "fungular",
+    "KICKER": "A neutral Angular playground",
+    "LEAD": "A generic Angular 22 monorepo skeleton: a mock API in the browser, static-hosting-ready output, vendor-neutral analytics and a lint-enforced architecture — free to experiment with.",
+    "CTA_PROFILE": "Open profile",
+    "CTA_SETTINGS": "Customize settings",
+    "FEATURES": "What’s inside",
+    "FEATURE_MOCK": "A mock API on Cloudflare — the app runs with no backend.",
+    "FEATURE_THEME": "A light/dark theme that follows your OS.",
+    "FEATURE_I18N": "Eight languages, RTL included."
+  }
+}

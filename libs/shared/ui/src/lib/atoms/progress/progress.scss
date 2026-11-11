@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.progress__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-block-end: var(--space-2);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.progress__track {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--color-bg-hover);
+}
+
+.progress__fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-progress);
+}

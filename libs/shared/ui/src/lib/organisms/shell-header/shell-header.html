@@ -1,0 +1,68 @@
+<header class="bar">
+  <div class="bar__logo">
+    <button
+      type="button"
+      class="bar__icon bar__menu"
+      [attr.aria-label]="
+        (menuOpen() ? 'SHELL.CLOSE_MENU' : 'SHELL.OPEN_MENU') | translate
+      "
+      [attr.aria-expanded]="menuOpen()"
+      (click)="menuToggled.emit()"
+    >
+      <lib-icon [name]="menuOpen() ? 'close' : 'menu'" size="md" />
+    </button>
+    @if (logo(); as image) {
+    <img class="bar__logo-image" [src]="image.url" [alt]="image.alt" />
+    }
+  </div>
+
+  <form class="bar__search" role="search" (submit)="$event.preventDefault()">
+    <lib-icon name="search" size="md" />
+    <input
+      type="search"
+      name="q"
+      [placeholder]="'SHELL.SEARCH_PLACEHOLDER' | translate"
+      [attr.aria-label]="'SHELL.SEARCH_ARIA' | translate"
+    />
+  </form>
+
+  <div class="bar__actions">
+    <button
+      type="button"
+      class="bar__icon bar__workspaces"
+      [attr.aria-label]="'SHELL.WORKSPACES_ARIA' | translate"
+    >
+      <lib-icon name="layers" size="md" />
+    </button>
+
+    <button
+      type="button"
+      class="bar__icon bar__bell"
+      [attr.aria-label]="'SHELL.NOTIFICATIONS_ARIA' | translate"
+    >
+      <lib-icon name="bell" size="md" />
+      @if (hasUnread()) {
+      <span class="bar__dot" aria-hidden="true"></span>
+      <span class="visually-hidden"
+        >{{ 'SHELL.NOTIFICATIONS_UNREAD' | translate }}</span
+      >
+      }
+    </button>
+
+    <button
+      type="button"
+      class="bar__icon bar__assistant"
+      [attr.aria-label]="'SHELL.ASSISTANT_ARIA' | translate"
+    >
+      <lib-icon name="sparkle" size="md" />
+    </button>
+
+    <a class="bar__user" routerLink="/settings">
+      <lib-avatar [name]="userName()" [src]="userAvatarUrl()" />
+      <span class="bar__greeting"
+        >{{ 'SHELL.GREETING' | translate: { name: userName() } }}</span
+      >
+      <lib-icon name="chevron-down" size="sm" />
+    </a>
+  </div>
+</header>

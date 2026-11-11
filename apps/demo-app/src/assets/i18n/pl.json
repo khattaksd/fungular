@@ -1,0 +1,71 @@
+{
+  "DEFAULT_LANGUAGE": "Polski",
+  "BACK": "Wstecz",
+  "SHELL": {
+    "NAV_ARIA": "Nawigacja główna",
+    "COLLAPSE": "Zwiń nawigację",
+    "EXPAND": "Rozwiń nawigację",
+    "OPEN_MENU": "Otwórz nawigację",
+    "CLOSE_MENU": "Zamknij nawigację",
+    "SEARCH_PLACEHOLDER": "Zacznij pisać, aby wyszukać…",
+    "SEARCH_ARIA": "Szukaj",
+    "WORKSPACES_ARIA": "Przestrzenie robocze",
+    "NOTIFICATIONS_ARIA": "Powiadomienia",
+    "NOTIFICATIONS_UNREAD": "Masz nieprzeczytane powiadomienia",
+    "ASSISTANT_ARIA": "Zapytaj asystenta",
+    "GREETING": "Cześć, {{name}}",
+    "HELP": "Pomoc i wsparcie",
+    "SETTINGS": "Ustawienia",
+    "UNAVAILABLE": "Wkrótce",
+    "NAV_SECTION": "Nawigacja",
+    "NAV_HOME": "Strona główna",
+    "NAV_PROFILE": "Profil"
+  },
+  "LANGUAGE_SELECT": {
+    "TRIGGER_ARIA": "Zmień język",
+    "LIST_ARIA": "Język"
+  },
+  "PROFILE": {
+    "TITLE": "Profil",
+    "BACK_HOME": "Wróć na stronę główną",
+    "LOADING": "Wczytywanie profilu...",
+    "ERROR": "Nie udało się wczytać profilu",
+    "RETRY": "Spróbuj ponownie"
+  },
+  "USER_INFO": {
+    "USER_ID": "ID użytkownika"
+  },
+  "NOT_FOUND": {
+    "TITLE": "Nie znaleziono strony",
+    "DESCRIPTION": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
+    "BACK_HOME": "Wróć na stronę główną"
+  },
+  "THEME": {
+    "SWITCH_TO_DARK": "Przełącz na ciemny motyw",
+    "SWITCH_TO_LIGHT": "Przełącz na jasny motyw"
+  },
+  "SETTINGS": {
+    "TITLE": "Ustawienia",
+    "LEAD": "Preferencje są zapisywane na tym urządzeniu. Nic nie jest wysyłane na serwer.",
+    "THEME": "Motyw",
+    "THEME_DESC": "Systemowy podąża za ustawieniem Twojego systemu operacyjnego.",
+    "THEME_LIGHT": "Jasny",
+    "THEME_DARK": "Ciemny",
+    "THEME_SYSTEM": "Systemowy",
+    "LANGUAGE": "Język",
+    "LANGUAGE_DESC": "Obowiązuje natychmiast w całej aplikacji.",
+    "REDUCE_MOTION": "Ogranicz animacje",
+    "REDUCE_MOTION_DESC": "Minimalizuje przejścia i efekty animowane."
+  },
+  "HOME": {
+    "TITLE": "fungular",
+    "KICKER": "Neutralny plac zabaw Angular",
+    "LEAD": "Generyczny szkielet monorepo Angular 22: mock API w przeglądarce, gotowe do statycznego hostowania, analityka niezależna od dostawcy i architektura egzekwowana przez lint — do swobodnego eksperymentowania.",
+    "CTA_PROFILE": "Otwórz profil",
+    "CTA_SETTINGS": "Dostosuj ustawienia",
+    "FEATURES": "Co zawiera",
+    "FEATURE_MOCK": "Mock API na Cloudflare — aplikacja działa bez backendu.",
+    "FEATURE_THEME": "Motyw jasny/ciemny zgodny z systemem operacyjnym.",
+    "FEATURE_I18N": "Osiem języków, w tym RTL."
+  }
+}
