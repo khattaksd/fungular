@@ -122,6 +122,67 @@ describe('BrandThemeService', () => {
     ).toBe('#0f766e');
   });
 
+  it('loads the brand named by ?brand= at startup', async () => {
+    setup();
+    window.history.replaceState({}, '', '/?brand=meadow');
+    try {
+      const promise = service.load();
+      http.expectOne('/assets/brands/meadow.json').flush(theme({ id: 'meadow' }));
+      await promise;
+      expect(service.theme()?.id).toBe('meadow');
+    } finally {
+      window.history.replaceState({}, '', '/');
+    }
+  });
+
+  it('applies the display font when the brand defines one', async () => {
+    setup();
+    const promise = service.applyBrand('harbor');
+    http
+      .expectOne('/assets/brands/harbor.json')
+      .flush(theme({ fonts: { display: 'Inter' } }));
+    await promise;
+
+    expect(
+      document.documentElement.style.getPropertyValue('--font-display'),
+    ).toBe('Inter');
+  });
+
+  it('is a no-op when asked to re-apply the current brand', async () => {
+    setup();
+    const promise = service.applyBrand('harbor');
+    const requests = http.match((req) =>
+      req.url.includes('/assets/brands/harbor.json'),
+    );
+    expect(requests).toHaveLength(1);
+    // Non-null: asserted length 1 above. `noUncheckedIndexedAccess` is on.
+    requests.at(0)!.flush(theme());
+    await promise;
+
+    const current = service.theme();
+    await service.applyBrand('harbor');
+
+    expect(service.theme()).toBe(current);
+    // No second fetch was issued for the same brand.
+    expect(
+      http.match((req) => req.url.includes('/assets/brands/harbor.json')),
+    ).toHaveLength(0);
+  });
+
+  it('keeps the neutral palette when the brand JSON is malformed', async () => {
+    setup();
+    const promise = service.applyBrand('harbor');
+    http
+      .expectOne('/assets/brands/harbor.json')
+      .flush({ id: 'harbor', colors: {} }); // missing name
+    await promise;
+
+    expect(service.theme()).toBeNull();
+    expect(
+      document.documentElement.style.getPropertyValue('--color-brand'),
+    ).toBe('');
+  });
+
   it('keeps the neutral palette when the fetch fails', async () => {
     setup();
     const promise = service.applyBrand('nope');
