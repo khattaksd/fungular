@@ -29,12 +29,10 @@ import {
   withInterceptors,
   withXhr,
 } from '@angular/common/http';
-import { ANALYTICS } from '@libs/analytics';
+import { ANALYTICS, PostHogService } from '@libs/analytics';
 import { GlobalErrorHandler, httpErrorInterceptor } from '@libs/ui';
 import { provideTranslation } from '@libs/translation';
-import {
-  tenantHeaderInterceptor,
-} from '@libs/session';
+import { tenantHeaderInterceptor } from '@libs/session';
 import { metaReducers, reducers } from './core/+state';
 import { CustomSerializer } from './core/services/router/router-serializer';
 import { filter } from 'rxjs';
@@ -83,9 +81,9 @@ export const appConfig: ApplicationConfig = {
     // production builds entirely rather than merely switching them to logOnly.
     ...(environment.production ? [] : [provideStoreDevtools({ maxAge: 25 })]),
 
-    // Initialize analytics and track route changes. `ANALYTICS` resolves to the
-    // no-op default until an implementation is registered with
-    // `{ provide: ANALYTICS, useClass: ... }`; this block is unchanged either way.
+    { provide: ANALYTICS, useExisting: PostHogService },
+
+    // Initialize analytics and track route changes through the PostHog service.
     provideAppInitializer(() => {
       const analytics = inject(ANALYTICS);
       const router = inject(Router);

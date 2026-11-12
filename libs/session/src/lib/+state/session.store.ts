@@ -1,4 +1,5 @@
 import { computed, inject } from '@angular/core';
+import { ANALYTICS } from '@libs/analytics';
 import { IGenericError } from '@libs/entity';
 import { tapResponse } from '@ngrx/operators';
 import {
@@ -98,42 +99,83 @@ export const SessionStore = signalStore(
     hasMultipleTenants: computed(() => (auth()?.tenants.length ?? 0) > 1),
     errorMessage: computed(() => error()?.message ?? null),
   })),
-  withMethods((store, service = inject(SessionService)) => ({
-    /**
-     * Fake login. On success: if the user belongs to exactly one tenant, that
-     * tenant is entered immediately; otherwise the chooser decides.
-     */
-    login: rxMethod<{ email: string; password: string }>(
-      pipe(
-        tap(() => patchState(store, { loading: true, error: null })),
-        switchMap(({ email, password }) =>
-          service.login(email, password).pipe(
-            tapResponse({
-              next: (auth) => {
-                const currentTenantId = auth.tenants.length === 1 ? auth.tenants[0]!.id : null;
-                patchState(store, { auth, currentTenantId, loading: false });
-                persist(store);
-              },
-              error: (error: IGenericError) =>
-                patchState(store, { error, loading: false }),
-            }),
+  withMethods(
+    (
+      store,
+      service = inject(SessionService),
+      analytics = inject(ANALYTICS),
+    ) => {
+      const identifyUser = (user: AppUser): void => {
+        analytics.identifyUser(user.id, { email: user.email, name: user.name });
+      };
+
+      // The session store hydrates before page render, so restore identity for a
+      // persisted authenticated session as well as after a fresh login.
+      const restoredUser = store.user();
+      if (restoredUser) identifyUser(restoredUser);
+
+      return {
+        /**
+         * Fake login. On success: if the user belongs to exactly one tenant, that
+         * tenant is entered immediately; otherwise the chooser decides.
+         */
+        login: rxMethod<{ email: string; password: string }>(
+          pipe(
+            tap(() => patchState(store, { loading: true, error: null })),
+            switchMap(({ email, password }) =>
+              service.login(email, password).pipe(
+                tapResponse({
+                  next: (auth) => {
+                    const previousUserId = store.user()?.id;
+                    if (previousUserId && previousUserId !== auth.user.id) {
+                      analytics.resetUser();
+                    }
+
+                    const currentTenantId =
+                      auth.tenants.length === 1 ? auth.tenants[0]!.id : null;
+                    patchState(store, {
+                      auth,
+                      currentTenantId,
+                      loading: false,
+                    });
+                    persist(store);
+                    identifyUser(auth.user);
+                    analytics.logEvent('user_logged_in', {
+                      tenant_count: auth.tenants.length,
+                      workspace_selected: currentTenantId !== null,
+                    });
+                    analytics.logInfo('authentication completed', {
+                      tenant_count: auth.tenants.length,
+                      workspace_selected: currentTenantId !== null,
+                    });
+                  },
+                  error: (error: IGenericError) =>
+                    patchState(store, { error, loading: false }),
+                }),
+              ),
+            ),
           ),
         ),
-      ),
-    ),
-    /** Picks the active tenant (the workspace). Data refetches via navigation. */
-    chooseTenant(tenantId: string): void {
-      if (!store.auth()?.tenants.some((t) => t.id === tenantId)) return;
-      patchState(store, { currentTenantId: tenantId, error: null });
-      persist(store);
+        /** Picks the active tenant (the workspace). Data refetches via navigation. */
+        chooseTenant(tenantId: string): void {
+          if (!store.auth()?.tenants.some((t) => t.id === tenantId)) return;
+          patchState(store, { currentTenantId: tenantId, error: null });
+          persist(store);
+          analytics.logEvent('workspace_selected', { workspace_id: tenantId });
+          analytics.logInfo('workspace selected', { workspace_id: tenantId });
+        },
+        logout(): void {
+          analytics.logEvent('user_logged_out');
+          analytics.logInfo('authenticated session ended');
+          analytics.resetUser();
+          patchState(store, { auth: null, currentTenantId: null, error: null });
+          try {
+            localStorage.removeItem(STORAGE_KEY);
+          } catch {
+            // Ignore storage failures on logout.
+          }
+        },
+      };
     },
-    logout(): void {
-      patchState(store, { auth: null, currentTenantId: null, error: null });
-      try {
-        localStorage.removeItem(STORAGE_KEY);
-      } catch {
-        // Ignore storage failures on logout.
-      }
-    },
-  })),
+  ),
 );

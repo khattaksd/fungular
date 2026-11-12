@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ANALYTICS } from '@libs/analytics';
 import { ButtonComponent } from '@libs/ui';
 import { IGenericError } from '@libs/entity';
 import { firstValueFrom } from 'rxjs';
@@ -24,6 +25,7 @@ import { TenantSettingsService } from '../../services/tenant-settings/tenant-set
 })
 export class TenantSettingsComponent {
   private readonly service = inject(TenantSettingsService);
+  private readonly analytics = inject(ANALYTICS);
 
   protected readonly name = signal('');
   protected readonly domain = signal('');
@@ -43,7 +45,11 @@ export class TenantSettingsComponent {
       this.logo.set(settings.logo);
       this.domain.set(settings.domain);
     } catch {
-      this.error.set({ message: 'Could not load tenant settings', code: '', status: 0 });
+      this.error.set({
+        message: 'Could not load tenant settings',
+        code: '',
+        status: 0,
+      });
     }
   }
 
@@ -55,6 +61,7 @@ export class TenantSettingsComponent {
       next: () => {
         this.saving.set(false);
         this.saved.set(true);
+        this.analytics.logEvent('tenant_settings_saved');
       },
       error: (err: IGenericError) => {
         this.saving.set(false);
@@ -66,7 +73,10 @@ export class TenantSettingsComponent {
   /** Fake upload: ask the mock, show whatever URL it returns. */
   protected uploadLogo(): void {
     this.service.uploadLogo().subscribe({
-      next: (result) => this.logo.set(result.url),
+      next: (result) => {
+        this.logo.set(result.url);
+        this.analytics.logEvent('tenant_logo_uploaded');
+      },
       error: (err: IGenericError) => this.error.set(err),
     });
   }

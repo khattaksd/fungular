@@ -14,19 +14,7 @@ export class GlobalErrorHandler implements ErrorHandler {
   private readonly fallback = new ErrorHandler();
 
   handleError(error: unknown): void {
-    const err = error as {
-      message?: string;
-      name?: string;
-      stack?: string;
-    } | null;
-
-    this.analytics.logEvent('app_exception', {
-      // Analytics backends truncate long params; keep the useful head of each field.
-      name: err?.name ?? 'Error',
-      message: (err?.message ?? String(error)).slice(0, 300),
-      stack: err?.stack?.slice(0, 500),
-    });
-
+    this.analytics.logException(error);
     this.fallback.handleError(error);
   }
 }

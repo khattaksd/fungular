@@ -10,8 +10,13 @@ import { InjectionToken } from '@angular/core';
 export interface Analytics {
   /** Called once during app initialization. Must resolve even when disabled. */
   initialize(): Promise<void>;
+  identifyUser(userId: string, personProperties: Record<string, unknown>): void;
   logEvent(eventName: string, params?: Record<string, unknown>): void;
+  /** Emits a purpose-written operational log through the configured provider. */
+  logInfo(message: string, attributes?: Record<string, unknown>): void;
+  logException(error: unknown): void;
   logPageView(pagePath: string, pageTitle?: string): void;
+  resetUser(): void;
 }
 
 /**
@@ -27,11 +32,27 @@ export class NoopAnalytics implements Analytics {
     // Intentionally empty.
   }
 
+  identifyUser(): void {
+    // Intentionally empty.
+  }
+
   logEvent(): void {
     // Intentionally empty.
   }
 
+  logInfo(): void {
+    // Intentionally empty.
+  }
+
+  logException(): void {
+    // Intentionally empty.
+  }
+
   logPageView(): void {
+    // Intentionally empty.
+  }
+
+  resetUser(): void {
     // Intentionally empty.
   }
 }

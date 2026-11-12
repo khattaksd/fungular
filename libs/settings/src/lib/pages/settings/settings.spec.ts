@@ -3,6 +3,7 @@ import {
   HttpTestingController,
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
+import { ANALYTICS, NoopAnalytics } from '@libs/analytics';
 import { Language } from '@libs/entity';
 import { ThemeService } from '@libs/theme';
 import { UpdateLanguageService } from '@libs/translation';
@@ -50,12 +51,14 @@ describe('Settings', () => {
     changeLanguage: vi.fn(),
     currentLanguage: () => Language.English,
   };
+  const analytics = { ...new NoopAnalytics(), logEvent: vi.fn() };
 
   const createComponent = createComponentFactory({
     component: Settings,
     providers: [
       { provide: ThemeService, useValue: themeService },
       { provide: UpdateLanguageService, useValue: languageService },
+      { provide: ANALYTICS, useValue: analytics },
       // Normally provided by the settings route, so a component-level test has to
       // register it explicitly.
       SettingsStore,
@@ -89,13 +92,16 @@ describe('Settings', () => {
     document.documentElement.classList.remove('reduce-motion');
     themeService.setPreference.mockReset();
     languageService.changeLanguage.mockReset();
+    analytics.logEvent.mockReset();
     spectator = createComponent();
     spectator.detectChanges();
     await flushTenant();
   });
 
   it('renders the preference rows plus the workspace panel', () => {
-    expect(spectator.queryAll('lib-setting-row').length).toBeGreaterThanOrEqual(3);
+    expect(spectator.queryAll('lib-setting-row').length).toBeGreaterThanOrEqual(
+      3,
+    );
     expect(spectator.query('lib-tenant-settings')).toBeTruthy();
     expect(spectator.element.textContent).toContain('Solstice');
   });
@@ -120,6 +126,12 @@ describe('Settings', () => {
     );
 
     expect(themeService.setPreference).toHaveBeenCalledWith('dark');
+    expect(analytics.logEvent).toHaveBeenCalledWith(
+      'theme_preference_changed',
+      {
+        preference: 'dark',
+      },
+    );
   });
 
   it('forwards a language click to UpdateLanguageService', () => {
@@ -132,6 +144,9 @@ describe('Settings', () => {
     expect(languageService.changeLanguage).toHaveBeenCalledWith(
       Language.Portuguese,
     );
+    expect(analytics.logEvent).toHaveBeenCalledWith('language_changed', {
+      language: Language.Portuguese,
+    });
   });
 
   it('toggles reduce motion and reflects it on the switch', () => {
@@ -148,5 +163,28 @@ describe('Settings', () => {
     expect(document.documentElement.classList.contains('reduce-motion')).toBe(
       true,
     );
+    expect(analytics.logEvent).toHaveBeenCalledWith('reduce_motion_changed', {
+      enabled: true,
+    });
+  });
+
+  it('skips the event when the active theme is chosen again', () => {
+    spectator.component.setTheme('system');
+
+    expect(themeService.setPreference).not.toHaveBeenCalled();
+    expect(analytics.logEvent).not.toHaveBeenCalled();
+  });
+
+  it('skips the event when the current language is chosen again', () => {
+    spectator.component.setLanguage(Language.English);
+
+    expect(languageService.changeLanguage).not.toHaveBeenCalled();
+    expect(analytics.logEvent).not.toHaveBeenCalled();
+  });
+
+  it('skips the event when reduce motion is already off', () => {
+    spectator.component.setReduceMotion(false);
+
+    expect(analytics.logEvent).not.toHaveBeenCalled();
   });
 });
