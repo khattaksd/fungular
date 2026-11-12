@@ -32,6 +32,9 @@ import {
 import { ANALYTICS } from '@libs/analytics';
 import { GlobalErrorHandler, httpErrorInterceptor } from '@libs/ui';
 import { provideTranslation } from '@libs/translation';
+import {
+  tenantHeaderInterceptor,
+} from '@libs/session';
 import { metaReducers, reducers } from './core/+state';
 import { CustomSerializer } from './core/services/router/router-serializer';
 import { filter } from 'rxjs';
@@ -52,7 +55,9 @@ export const appConfig: ApplicationConfig = {
       withXhr(),
       // `/api/*` is answered by the Cloudflare Pages Functions mock (see
       // `functions/`), or by a real backend later — same-origin either way.
-      withInterceptors([httpErrorInterceptor]),
+      // The tenant interceptor adds `X-Tenant-Id` so the API serves the active
+      // tenant's data.
+      withInterceptors([tenantHeaderInterceptor, httpErrorInterceptor]),
     ),
 
     // Uncaught errors reach analytics instead of only the console.

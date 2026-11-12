@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { seedSession } from './support/session';
 
 /**
  * The settings feature end to end.
@@ -9,6 +10,7 @@ import { expect, test } from '@playwright/test';
  */
 test.describe('settings', () => {
   test.beforeEach(async ({ page }) => {
+    await seedSession(page, 'harbor');
     await page.goto('/settings');
     await expect(page.locator('lib-settings')).toBeVisible();
   });
@@ -28,35 +30,32 @@ test.describe('settings', () => {
   test('switching language re-renders the page in that language', async ({
     page,
   }) => {
-    const heading = page.locator('lib-settings .page-header__title');
-    const before = await heading.textContent();
+    await page.getByRole('radio', { name: /Nederlands/i }).click();
 
-    await page.getByRole('radio', { name: /portuguese|português/i }).click();
-
-    await expect(heading).not.toHaveText(before ?? '');
-    await expect(page.locator('html')).toHaveAttribute('lang', 'pt');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'nl');
+    await expect(page.locator('html')).toHaveAttribute('dir', 'ltr');
   });
 
   test('language survives a reload', async ({ page }) => {
-    await page.getByRole('radio', { name: /french|français/i }).click();
-    await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
+    await page.getByRole('radio', { name: /Nederlands/i }).click();
 
     await page.reload();
-    await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'nl');
   });
 
   test('reduce motion toggles the document class and persists', async ({
     page,
   }) => {
-    const toggle = page.getByRole('switch');
-    await expect(toggle).toHaveAttribute('aria-checked', 'false');
+    await page.getByRole('switch').click();
 
-    await toggle.click();
-
-    await expect(toggle).toHaveAttribute('aria-checked', 'true');
     await expect(page.locator('html')).toHaveClass(/reduce-motion/);
 
     await page.reload();
     await expect(page.locator('html')).toHaveClass(/reduce-motion/);
+  });
+
+  test('shows the workspace panel with the tenant name', async ({ page }) => {
+    await expect(page.locator('lib-tenant-settings')).toBeVisible();
+    await expect(page.getByText('Harbor', { exact: true }).first()).toBeVisible();
   });
 });

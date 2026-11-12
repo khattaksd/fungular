@@ -18,9 +18,13 @@
     "SETTINGS": "Ustawienia",
     "UNAVAILABLE": "Wkrótce",
     "NAV_SECTION": "Nawigacja",
-    "NAV_HOME": "Strona główna",
-    "NAV_PROFILE": "Profil",
-    "POWERED_BY": "Obsługiwane przez"
+    "POWERED_BY": "Obsługiwane przez",
+    "NAV_DASHBOARD": "Pulpit",
+    "NAV_PROJECTS": "Projekty",
+    "NAV_TASKS": "Zadania",
+    "NAV_TEAM": "Zespół",
+    "NAV_SETTINGS": "Ustawienia",
+    "NAV_BILLING": "Rozliczenia"
   },
   "LANGUAGE_SELECT": {
     "TRIGGER_ARIA": "Zmień język",
@@ -56,22 +60,94 @@
     "LANGUAGE": "Język",
     "LANGUAGE_DESC": "Obowiązuje natychmiast w całej aplikacji.",
     "REDUCE_MOTION": "Ogranicz animacje",
-    "REDUCE_MOTION_DESC": "Minimalizuje przejścia i efekty animowane."
+    "REDUCE_MOTION_DESC": "Minimalizuje przejścia i efekty animowane.",
+    "TENANT_HEADING": "Miejsce pracy",
+    "TENANT_NAME": "Nazwa miejsca pracy",
+    "SAVE": "Zapisz",
+    "SAVING": "Zapisywanie…",
+    "SAVED": "Zapisano",
+    "UPLOAD_LOGO": "Wgraj logo",
+    "TENANT_DESC": "Tenant name and logo — demo data, saved via the mock API."
   },
-  "HOME": {
-    "TITLE": "fungular",
-    "KICKER": "Neutralny plac zabaw Angular",
-    "LEAD": "Generyczny szkielet monorepo Angular 22: mock API w przeglądarce, gotowe do statycznego hostowania, analityka niezależna od dostawcy i architektura egzekwowana przez lint — do swobodnego eksperymentowania.",
-    "CTA_PROFILE": "Otwórz profil",
-    "CTA_SETTINGS": "Dostosuj ustawienia",
-    "FEATURES": "Co zawiera",
-    "FEATURE_MOCK": "Mock API na Cloudflare — aplikacja działa bez backendu.",
-    "FEATURE_THEME": "Motyw jasny/ciemny zgodny z systemem operacyjnym.",
-    "FEATURE_I18N": "Osiem języków, w tym RTL.",
-    "BRANDS_LABEL": "Marka demo",
-    "BRAND_SOLSTICE": "Solstice",
-    "BRAND_HARBOR": "Harbor",
-    "BRAND_MEADOW": "Meadow",
-    "FEATURE_BRANDS": "Trzy marki demo zmieniają paletę na żywo."
+  "SESSION": {
+    "TITLE": "Session",
+    "LEAD": "Session overview.",
+    "LOADING": "Loading…",
+    "ERROR": "Something went wrong."
+  },
+  "PROJECTS": {
+    "TITLE": "Projekty",
+    "LEAD": "Everything the team is shipping, for this workspace.",
+    "ACTIVE": "aktywne",
+    "STATUS_active": "Aktywny",
+    "STATUS_on-hold": "Wstrzymany",
+    "STATUS_archived": "Zarchiwizowany",
+    "TASKS": "zadań",
+    "TASKS_HEADING": "Zadania",
+    "MEMBERS_HEADING": "Członkowie"
+  },
+  "TASKS": {
+    "TITLE": "Zadania",
+    "LEAD": "The workspace's task list — filter by status, priority or search.",
+    "SEARCH": "Szukaj zadań",
+    "OF": "z",
+    "STATUS_FILTER": "Status",
+    "PRIORITY_FILTER": "Priorytet",
+    "FILTER_ALL": "Wszystkie",
+    "FILTER_TODO": "Do zrobienia",
+    "FILTER_IN_PROGRESS": "W trakcie",
+    "FILTER_DONE": "Zrobione",
+    "PRIORITY_ALL": "Wszystkie",
+    "PRIORITY_HIGH": "Wysoki",
+    "PRIORITY_MEDIUM": "Średni",
+    "PRIORITY_LOW": "Niski",
+    "STATUS_todo": "Do zrobienia",
+    "STATUS_in_progress": "W trakcie",
+    "STATUS_done": "Zrobione",
+    "PROJECT": "Projekt"
+  },
+  "TEAM": {
+    "TITLE": "Zespół",
+    "LEAD": "aktywnych członków",
+    "STATUS_active": "Aktywny",
+    "STATUS_invited": "Zaproszony"
+  },
+  "BILLING": {
+    "TITLE": "Rozliczenia",
+    "LEAD": "Plan, usage and invoices for this workspace.",
+    "PLAN": "Plan",
+    "SEATS": "miejsc",
+    "USAGE_HEADING": "Zużycie",
+    "INVOICES_HEADING": "Faktury",
+    "NO_INVOICES": "Brak faktur.",
+    "STATUS_paid": "Opłacona",
+    "STATUS_due": "Zaległa"
+  },
+  "SHARED": {
+    "LOADING": "Ładowanie…",
+    "DUE": "Termin",
+    "BACK": "Wstecz",
+    "PROGRESS": "Postęp"
+  },
+  "AUTH": {
+    "SIGN_IN": "Zaloguj się",
+    "SIGN_IN_HINT": "Logowanie demonstracyjne: dowolny poprawny e-mail i hasło działają.",
+    "EMAIL": "E-mail",
+    "PASSWORD": "Hasło",
+    "CONTINUE": "Zaloguj się",
+    "SIGNING_IN": "Logowanie…",
+    "DEMO_HINT": "Wskazówka: single@example.com loguje do jednego miejsca pracy.",
+    "CHOOSE_WORKSPACE": "Wybierz miejsce pracy",
+    "CHOOSE_WORKSPACE_HINT": "Należysz do kilku miejsc pracy — wybierz jedno.",
+    "SIGN_OUT": "Wyloguj się"
+  },
+  "DASHBOARD": {
+    "GREETING_MORNING": "Dzień dobry, {{name}}.",
+    "GREETING_AFTERNOON": "Dzień dobry, {{name}}.",
+    "GREETING_EVENING": "Dobry wieczór, {{name}}.",
+    "LEAD": "Twoje miejsce pracy w skrócie",
+    "PROJECTS": "Projekty",
+    "ACTIVITY": "Ostatnia aktywność",
+    "VIEW_TASKS": "Zobacz wszystkie zadania"
   }
 }

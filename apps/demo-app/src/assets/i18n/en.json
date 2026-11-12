@@ -18,9 +18,13 @@
     "SETTINGS": "Settings",
     "UNAVAILABLE": "Coming soon",
     "NAV_SECTION": "Navigate",
-    "NAV_HOME": "Home",
-    "NAV_PROFILE": "Profile",
-    "POWERED_BY": "Powered by"
+    "POWERED_BY": "Powered by",
+    "NAV_DASHBOARD": "Dashboard",
+    "NAV_PROJECTS": "Projects",
+    "NAV_TASKS": "Tasks",
+    "NAV_TEAM": "Team",
+    "NAV_SETTINGS": "Settings",
+    "NAV_BILLING": "Billing"
   },
   "LANGUAGE_SELECT": {
     "TRIGGER_ARIA": "Change language",
@@ -56,22 +60,94 @@
     "LANGUAGE": "Language",
     "LANGUAGE_DESC": "Applies immediately across the whole application.",
     "REDUCE_MOTION": "Reduce motion",
-    "REDUCE_MOTION_DESC": "Minimises transitions and animated effects."
+    "REDUCE_MOTION_DESC": "Minimises transitions and animated effects.",
+    "TENANT_HEADING": "Workspace",
+    "TENANT_DESC": "Tenant name and logo — demo data, saved via the mock API.",
+    "TENANT_NAME": "Workspace name",
+    "SAVE": "Save",
+    "SAVING": "Saving…",
+    "SAVED": "Saved",
+    "UPLOAD_LOGO": "Upload logo"
   },
-  "HOME": {
-    "TITLE": "fungular",
-    "KICKER": "A neutral Angular playground",
-    "LEAD": "A generic Angular 22 monorepo skeleton: a mock API in the browser, static-hosting-ready output, vendor-neutral analytics and a lint-enforced architecture — free to experiment with.",
-    "CTA_PROFILE": "Open profile",
-    "CTA_SETTINGS": "Customize settings",
-    "FEATURES": "What’s inside",
-    "FEATURE_MOCK": "A mock API on Cloudflare — the app runs with no backend.",
-    "FEATURE_THEME": "A light/dark theme that follows your OS.",
-    "FEATURE_I18N": "Eight languages, RTL included.",
-    "BRANDS_LABEL": "Demo brand",
-    "BRAND_SOLSTICE": "Solstice",
-    "BRAND_HARBOR": "Harbor",
-    "BRAND_MEADOW": "Meadow",
-    "FEATURE_BRANDS": "Three demo brands switch the palette live."
+  "SESSION": {
+    "TITLE": "Session",
+    "LEAD": "Session overview.",
+    "LOADING": "Loading…",
+    "ERROR": "Something went wrong."
+  },
+  "PROJECTS": {
+    "TITLE": "Projects",
+    "LEAD": "Everything the team is shipping, for this workspace.",
+    "ACTIVE": "active",
+    "STATUS_active": "Active",
+    "STATUS_on-hold": "On hold",
+    "STATUS_archived": "Archived",
+    "TASKS": "tasks",
+    "TASKS_HEADING": "Tasks",
+    "MEMBERS_HEADING": "Members"
+  },
+  "TASKS": {
+    "TITLE": "Tasks",
+    "LEAD": "The workspace's task list — filter by status, priority or search.",
+    "SEARCH": "Search tasks",
+    "OF": "of",
+    "STATUS_FILTER": "Status",
+    "PRIORITY_FILTER": "Priority",
+    "FILTER_ALL": "All",
+    "FILTER_TODO": "To do",
+    "FILTER_IN_PROGRESS": "In progress",
+    "FILTER_DONE": "Done",
+    "PRIORITY_ALL": "All",
+    "PRIORITY_HIGH": "High",
+    "PRIORITY_MEDIUM": "Medium",
+    "PRIORITY_LOW": "Low",
+    "STATUS_todo": "To do",
+    "STATUS_in_progress": "In progress",
+    "STATUS_done": "Done",
+    "PROJECT": "Project"
+  },
+  "TEAM": {
+    "TITLE": "Team",
+    "LEAD": "active members",
+    "STATUS_active": "Active",
+    "STATUS_invited": "Invited"
+  },
+  "BILLING": {
+    "TITLE": "Billing",
+    "LEAD": "Plan, usage and invoices for this workspace.",
+    "PLAN": "Plan",
+    "SEATS": "seats",
+    "USAGE_HEADING": "Usage",
+    "INVOICES_HEADING": "Invoices",
+    "NO_INVOICES": "No invoices yet.",
+    "STATUS_paid": "Paid",
+    "STATUS_due": "Due"
+  },
+  "SHARED": {
+    "LOADING": "Loading…",
+    "DUE": "Due",
+    "BACK": "Back",
+    "PROGRESS": "Progress"
+  },
+  "AUTH": {
+    "SIGN_IN": "Sign in",
+    "SIGN_IN_HINT": "Mock sign-in: any well-formed email and password work.",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CONTINUE": "Sign in",
+    "SIGNING_IN": "Signing in…",
+    "DEMO_HINT": "Tip: any name@example.com works — use single@example.com to log into one workspace (no chooser).",
+    "CHOOSE_WORKSPACE": "Choose a workspace",
+    "CHOOSE_WORKSPACE_HINT": "You belong to several workspaces — pick the one to work in.",
+    "SIGN_OUT": "Sign out"
+  },
+  "DASHBOARD": {
+    "GREETING_MORNING": "Good morning, {{name}}.",
+    "GREETING_AFTERNOON": "Good afternoon, {{name}}.",
+    "GREETING_EVENING": "Good evening, {{name}}.",
+    "LEAD": "Your workspace at a glance",
+    "PROJECTS": "Projects",
+    "ACTIVITY": "Recent activity",
+    "VIEW_TASKS": "View all tasks"
   }
 }

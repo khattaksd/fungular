@@ -6,12 +6,14 @@ Spectator, Playwright, Storybook — with a **mock API in Cloudflare Pages Funct
 output**, and a **vendor-neutral analytics seam** (PostHog is the first implementation).
 
 > **Deliberately opinionless about domain and design.** No product entity, no LMS/learner
-> concepts, no design-system constraints. The theming story is demonstrated with
-> three **fictional demo brands** (**Solstice, Harbor, Meadow** — `?brand=harbor`),
-> a navy peak-and-sunrise mark as the logo, and a light/dark theme that follows
-> your OS. The point of fungular is the architecture and the patterns, so you can
-> experiment freely: change the brand data, plug in an analytics vendor, deploy it
-> anywhere, build whatever domain you like on top.
+> concepts, no design-system constraints. The app is a multi-tenant playground: a
+> fake sign-in (`any@example.com` works, `single@example.com` logs into one
+> workspace), a workspace chooser for people in several tenants, and **three
+> fictional tenants — Solstice, Harbor, Meadow** — that are also the themes
+> (choosing a tenant re-themes and swaps the whole dataset). The point of fungular
+> is the architecture and the patterns, so you can experiment freely: change the
+> tenant data, plug in an analytics vendor, deploy it anywhere, build whatever
+> domain you like on top.
 
 [![CI](https://github.com/khattaksd/fungular/actions/workflows/ci.yml/badge.svg)](https://github.com/khattaksd/fungular/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -29,10 +31,10 @@ Node `^22.22.3`, `^24.15.0` or `>=26`, as Angular 22 requires, and npm 10.9.8 or
 `nvm use` picks up `.nvmrc` (22.23.4, the version CI uses); `.npmrc` makes `npm install`
 fail on anything outside `engines`. No account is needed.
 
-**Demo brands.** Open `http://localhost:4200/?brand=meadow` (or hit the brand
-switcher on the home page) to see the whole palette re-theme. The three brands
-live in `apps/demo-app/src/assets/brands/`; Settings has the OS-synced light/dark
-toggle.
+**Tenants are themes.** Log in as `alex@example.com` and pick Harbor in the
+chooser (or flip the sidebar switcher) to watch the palette and the data swap
+live. The three tenants live in `apps/demo-app/src/assets/brands/`; Settings has
+the OS-synced light/dark toggle.
 
 **No backend? The mock API lives in Cloudflare Pages Functions.** `functions/api/[[path]].ts`
 answers `/api/*` with the same `METHOD /path` handlers the app expects — locally via
@@ -56,6 +58,23 @@ deployed preview with `BASE_URL`. Details and the rules the linter enforces are 
 
 Angular 22 (standalone, zoneless), NgRx SignalStore, ngx-translate (8 languages incl.
 RTL Arabic), Tailwind 4 + SCSS, Nx, Vitest + Spectator, Playwright, Storybook.
+
+## The app
+
+| Route | What it is |
+| --- | --- |
+| `/login` | Fake sign-in (`any@example.com` + any password) |
+| `/workspaces` | Chooser for users in more than one tenant (multi-tenant after login) |
+| `/` | Dashboard: stats, top projects, recent activity |
+| `/projects` · `/projects/:id` | Project cards; detail with tasks and members |
+| `/tasks` | All tasks — filter by status, priority, search |
+| `/team` | Member list with role badges |
+| `/settings` | Theme/language/motion plus the workspace panel (name, fake logo upload) |
+| `/billing` | Plan, usage meters, invoices |
+
+Every tenant-scoped dataset is keyed by `X-Tenant-Id` (the app's interceptor adds
+it), so switching workspace in the sidebar **swaps the entire dataset** — and the
+brand theme with it.
 
 ## How it fits together
 

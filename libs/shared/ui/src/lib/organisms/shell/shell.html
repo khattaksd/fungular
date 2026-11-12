@@ -18,12 +18,13 @@
       [items]="navItems()"
       [footerItems]="footerItems()"
       [collapsed]="collapsed()"
-      [tenantLabel]="brand()?.tenantLabel ?? null"
+      [workspaces]="workspaces()"
       [tagline]="brand()?.tagline ?? null"
       [taglineSub]="brand()?.taglineSub ?? null"
       [platformLogo]="platformLogo()"
       (collapseToggled)="toggleCollapsed()"
       (navigated)="closeDrawer(false)"
+      (workspaceSelected)="workspaceSelected.emit($event)"
     />
 
     @if (drawerOpen()) {

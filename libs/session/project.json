@@ -1,0 +1,31 @@
+{
+  "name": "session",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/session/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": [
+    "scope:session"
+  ],
+  "targets": {
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "coverageInclude": [
+          "libs/session/src/**/*.ts"
+        ],
+        "coverageExclude": [
+          "libs/session/src/**/index.ts",
+          "libs/session/src/**/*.routes.ts",
+          "libs/session/src/**/*.spec.ts"
+        ],
+        "coverageThresholds": {
+          "statements": 58,
+          "branches": 58,
+          "functions": 68,
+          "lines": 57
+        }
+      }
+    }
+  }
+}

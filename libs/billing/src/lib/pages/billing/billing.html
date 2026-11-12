@@ -1,0 +1,68 @@
+<main class="mx-auto max-w-4xl px-4 py-10">
+  <div>
+    <h1 class="text-3xl font-bold tracking-tight text-neutral-900">
+      {{ 'BILLING.TITLE' | translate }}
+    </h1>
+    <p class="mt-1 text-neutral-600">{{ 'BILLING.LEAD' | translate }}</p>
+  </div>
+
+  @if (store.loading()) {
+  <p class="mt-16 text-center text-neutral-500">{{ 'SHARED.LOADING' | translate }}</p>
+  } @else if (store.errorMessage(); as message) {
+  <p role="alert" class="mt-16 text-center font-medium text-red-600">{{ message }}</p>
+  } @else if (store.info(); as info) {
+  <section class="mt-8 rounded-2xl border border-neutral-200 bg-white p-6">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <p class="text-sm font-semibold tracking-widest text-neutral-500">
+          {{ 'BILLING.PLAN' | translate }}
+        </p>
+        <h2 class="mt-1 text-2xl font-bold text-neutral-900">{{ info.plan }}</h2>
+        <p class="mt-1 text-neutral-600">{{ info.price }}</p>
+      </div>
+       <lib-badge tone="brand" pill>{{ info.seats }} {{ 'BILLING.SEATS' | translate }}</lib-badge>
+    </div>
+  </section>
+
+  <section class="mt-6 rounded-2xl border border-neutral-200 bg-white p-6">
+    <h2 class="text-lg font-semibold text-neutral-900">
+      {{ 'BILLING.USAGE_HEADING' | translate }}
+    </h2>
+    <ul class="mt-4 space-y-4">
+      @for (meter of info.usage; track meter.label) {
+      <li>
+        <div class="flex justify-between text-sm">
+          <span class="font-medium text-neutral-900">{{ meter.label }}</span>
+          <span class="text-neutral-500">{{ meter.pct }}%</span>
+        </div>
+        <lib-progress [value]="meter.pct" [label]="meter.label" class="mt-1" />
+      </li>
+      }
+    </ul>
+  </section>
+
+  <section class="mt-6 rounded-2xl border border-neutral-200 bg-white p-6">
+    <h2 class="text-lg font-semibold text-neutral-900">
+      {{ 'BILLING.INVOICES_HEADING' | translate }}
+    </h2>
+    @if (info.invoices.length === 0) {
+    <p class="mt-3 text-sm text-neutral-500">{{ 'BILLING.NO_INVOICES' | translate }}</p>
+    } @else {
+    <ul class="mt-3 divide-y divide-neutral-200">
+      @for (invoice of info.invoices; track invoice.id) {
+      <li class="flex items-center gap-3 py-3">
+        <span class="flex-1 font-medium text-neutral-900">{{ invoice.id }}</span>
+        <span class="text-sm text-neutral-500">{{ invoice.date }}</span>
+        <span class="font-semibold text-neutral-900">{{ invoice.amount }}</span>
+        <lib-badge
+          [tone]="invoice.status === 'paid' ? 'success' : 'warning'"
+          size="sm"
+          >{{ 'BILLING.STATUS_' + invoice.status | translate }}</lib-badge
+        >
+      </li>
+      }
+    </ul>
+    }
+  </section>
+  }
+</main>

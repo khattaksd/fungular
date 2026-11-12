@@ -18,9 +18,13 @@
     "SETTINGS": "Instellingen",
     "UNAVAILABLE": "Binnenkort beschikbaar",
     "NAV_SECTION": "Navigeren",
-    "NAV_HOME": "Home",
-    "NAV_PROFILE": "Profiel",
-    "POWERED_BY": "Mogelijk gemaakt door"
+    "POWERED_BY": "Mogelijk gemaakt door",
+    "NAV_DASHBOARD": "Dashboard",
+    "NAV_PROJECTS": "Projecten",
+    "NAV_TASKS": "Taken",
+    "NAV_TEAM": "Team",
+    "NAV_SETTINGS": "Instellingen",
+    "NAV_BILLING": "Facturatie"
   },
   "LANGUAGE_SELECT": {
     "TRIGGER_ARIA": "Taal wijzigen",
@@ -56,22 +60,94 @@
     "LANGUAGE": "Taal",
     "LANGUAGE_DESC": "Wordt meteen in de hele applicatie toegepast.",
     "REDUCE_MOTION": "Beweging beperken",
-    "REDUCE_MOTION_DESC": "Beperkt overgangen en geanimeerde effecten."
+    "REDUCE_MOTION_DESC": "Beperkt overgangen en geanimeerde effecten.",
+    "TENANT_HEADING": "Werkruimte",
+    "TENANT_NAME": "Naam van de werkruimte",
+    "SAVE": "Opslaan",
+    "SAVING": "Opslaan…",
+    "SAVED": "Opgeslagen",
+    "UPLOAD_LOGO": "Logo uploaden",
+    "TENANT_DESC": "Tenant name and logo — demo data, saved via the mock API."
   },
-  "HOME": {
-    "TITLE": "fungular",
-    "KICKER": "Een neutrale Angular-speeltuin",
-    "LEAD": "Een generiek Angular 22 monorepo-skelet: mock-API in de browser, statisch-hosting-ready output, leveranciersonafhankelijke analytics en een door lint afgedwongen architectuur — vrij om mee te experimenteren.",
-    "CTA_PROFILE": "Profiel openen",
-    "CTA_SETTINGS": "Instellingen aanpassen",
-    "FEATURES": "Wat zit erin",
-    "FEATURE_MOCK": "Mock-API op Cloudflare — de app draait zonder backend.",
-    "FEATURE_THEME": "Licht/donker-thema dat je besturingssysteem volgt.",
-    "FEATURE_I18N": "Acht talen, inclusief RTL.",
-    "BRANDS_LABEL": "Demomerk",
-    "BRAND_SOLSTICE": "Solstice",
-    "BRAND_HARBOR": "Harbor",
-    "BRAND_MEADOW": "Meadow",
-    "FEATURE_BRANDS": "Drie demomerken wisselen live van palet."
+  "SESSION": {
+    "TITLE": "Session",
+    "LEAD": "Session overview.",
+    "LOADING": "Loading…",
+    "ERROR": "Something went wrong."
+  },
+  "PROJECTS": {
+    "TITLE": "Projecten",
+    "LEAD": "Everything the team is shipping, for this workspace.",
+    "ACTIVE": "actief",
+    "STATUS_active": "Actief",
+    "STATUS_on-hold": "Pauze",
+    "STATUS_archived": "Gearchiveerd",
+    "TASKS": "taken",
+    "TASKS_HEADING": "Taken",
+    "MEMBERS_HEADING": "Leden"
+  },
+  "TASKS": {
+    "TITLE": "Taken",
+    "LEAD": "The workspace's task list — filter by status, priority or search.",
+    "SEARCH": "Zoek taken",
+    "OF": "van",
+    "STATUS_FILTER": "Status",
+    "PRIORITY_FILTER": "Prioriteit",
+    "FILTER_ALL": "Alle",
+    "FILTER_TODO": "Te doen",
+    "FILTER_IN_PROGRESS": "Bezig",
+    "FILTER_DONE": "Klaar",
+    "PRIORITY_ALL": "Alle",
+    "PRIORITY_HIGH": "Hoog",
+    "PRIORITY_MEDIUM": "Middel",
+    "PRIORITY_LOW": "Laag",
+    "STATUS_todo": "Te doen",
+    "STATUS_in_progress": "Bezig",
+    "STATUS_done": "Klaar",
+    "PROJECT": "Project"
+  },
+  "TEAM": {
+    "TITLE": "Team",
+    "LEAD": "actieve leden",
+    "STATUS_active": "Actief",
+    "STATUS_invited": "Uitgenodigd"
+  },
+  "BILLING": {
+    "TITLE": "Facturatie",
+    "LEAD": "Plan, usage and invoices for this workspace.",
+    "PLAN": "Plan",
+    "SEATS": "zetels",
+    "USAGE_HEADING": "Gebruik",
+    "INVOICES_HEADING": "Facturen",
+    "NO_INVOICES": "Nog geen facturen.",
+    "STATUS_paid": "Betaald",
+    "STATUS_due": "Verschuldigd"
+  },
+  "SHARED": {
+    "LOADING": "Laden…",
+    "DUE": "Deadline",
+    "BACK": "Terug",
+    "PROGRESS": "Voortgang"
+  },
+  "AUTH": {
+    "SIGN_IN": "Inloggen",
+    "SIGN_IN_HINT": "Demo-inlog: elk geldig e-mailadres en wachtwoord werken.",
+    "EMAIL": "E-mail",
+    "PASSWORD": "Wachtwoord",
+    "CONTINUE": "Inloggen",
+    "SIGNING_IN": "Inloggen…",
+    "DEMO_HINT": "Tip: single@example.com logt in op één werkruimte.",
+    "CHOOSE_WORKSPACE": "Kies een werkruimte",
+    "CHOOSE_WORKSPACE_HINT": "Je zit in meerdere werkruimten — kies er één.",
+    "SIGN_OUT": "Uitloggen"
+  },
+  "DASHBOARD": {
+    "GREETING_MORNING": "Goedemorgen, {{name}}.",
+    "GREETING_AFTERNOON": "Goedemiddag, {{name}}.",
+    "GREETING_EVENING": "Goedenavond, {{name}}.",
+    "LEAD": "Je werkruimte in één oogopslag",
+    "PROJECTS": "Projecten",
+    "ACTIVITY": "Recente activiteit",
+    "VIEW_TASKS": "Alle taken bekijken"
   }
 }

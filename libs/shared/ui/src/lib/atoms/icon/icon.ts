@@ -14,6 +14,8 @@ export const ICON_NAMES = [
   'bell',
   'bookmark',
   'book',
+  'briefcase',
+  'credit-card',
   'check',
   'chevron-down',
   'chevron-left',

@@ -1,6 +1,7 @@
 import type {
   ShellLogo,
   ShellNavItem,
+  WorkspaceItem,
 } from '../src/lib/organisms/shell-nav/shell-nav';
 
 export const NAV_ITEMS: readonly ShellNavItem[] = [
@@ -20,8 +21,14 @@ export const FOOTER_ITEMS: readonly ShellNavItem[] = [
   { id: 'settings', labelKey: 'SHELL.SETTINGS', icon: 'settings' },
 ];
 
-/** The mark behind every brand ("Powered by ..."): the navy peak-and-sunrise. */
+/** The mark behind every brand ("Powered by ..."): the navy monogram badge. */
 export const PLATFORM_LOGO: ShellLogo = {
   url: './assets/logo.svg',
   alt: 'fungular',
 };
+
+export const WORKSPACES: readonly WorkspaceItem[] = [
+  { id: 'solstice', label: 'Solstice', logoUrl: './assets/brands/solstice-logo.svg', active: true },
+  { id: 'harbor', label: 'Harbor', logoUrl: './assets/brands/harbor-logo.svg' },
+  { id: 'meadow', label: 'Meadow', logoUrl: './assets/brands/meadow-logo.svg' },
+];

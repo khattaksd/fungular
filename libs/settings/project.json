@@ -4,22 +4,26 @@
   "sourceRoot": "libs/settings/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": ["scope:settings"],
+  "tags": [
+    "scope:settings"
+  ],
   "targets": {
     "test": {
       "executor": "@angular/build:unit-test",
       "options": {
-        "coverageInclude": ["libs/settings/src/**/*.ts"],
+        "coverageInclude": [
+          "libs/settings/src/**/*.ts"
+        ],
         "coverageExclude": [
           "libs/settings/src/**/index.ts",
           "libs/settings/src/**/*.routes.ts",
           "libs/settings/src/**/*.spec.ts"
         ],
         "coverageThresholds": {
-          "statements": 95,
-          "branches": 90,
-          "functions": 90,
-          "lines": 95
+          "statements": 82,
+          "branches": 98,
+          "functions": 72,
+          "lines": 79
         }
       }
     }

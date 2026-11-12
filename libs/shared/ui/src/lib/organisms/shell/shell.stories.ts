@@ -4,6 +4,7 @@ import {
   FOOTER_ITEMS,
   NAV_ITEMS,
   PLATFORM_LOGO,
+  WORKSPACES,
 } from '../../../../.storybook/shell-fixtures';
 import { ShellComponent } from './shell';
 
@@ -17,6 +18,7 @@ const meta: Meta<ShellComponent> = {
       brand: loaded['brand'] as BrandTheme,
       navItems: NAV_ITEMS,
       footerItems: FOOTER_ITEMS,
+      workspaces: WORKSPACES,
       platformLogo: PLATFORM_LOGO,
     },
     template: `
@@ -24,6 +26,7 @@ const meta: Meta<ShellComponent> = {
         [navItems]="navItems"
         [footerItems]="footerItems"
         [brand]="brand"
+        [workspaces]="workspaces"
         [platformLogo]="platformLogo"
         [userName]="userName"
         [hasUnread]="hasUnread"
@@ -37,7 +40,7 @@ export default meta;
 
 type Story = StoryObj<ShellComponent>;
 
-/** Switch brand, direction and viewport from the toolbars. */
+/** Switch brand, workspace, direction and viewport from the toolbars. */
 export const Default: Story = {};
 
 export const NoUnread: Story = { args: { hasUnread: false } };

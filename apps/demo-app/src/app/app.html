@@ -2,9 +2,11 @@
   [navItems]="navItems"
   [footerItems]="footerItems"
   [brand]="brand()"
+  [workspaces]="workspaces()"
   [platformLogo]="platformLogo"
-  [userName]="user.name"
+  [userName]="userName()"
   [hasUnread]="true"
+  (workspaceSelected)="onWorkspaceSelected($event)"
 >
   <router-outlet></router-outlet>
 </lib-shell>

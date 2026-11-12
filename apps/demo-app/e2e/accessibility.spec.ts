@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { seedSession } from './support/session';
 
 /**
  * Structural accessibility checks, kept deliberately dependency-free.
@@ -7,9 +8,14 @@ import { expect, test } from '@playwright/test';
  * during ordinary work: a heading that disappears, a control that loses its
  * accessible name, a language switch that does not update `<html lang>`.
  */
-const ROUTES = ['/', '/settings', '/profile'];
+const ROUTES = ['/login', '/', '/projects', '/tasks', '/team', '/settings', '/billing', '/profile'];
 
 test.describe('accessibility', () => {
+  test.beforeEach(async ({ page }) => {
+    // The tenant pages need a session; /login ignores it.
+    await seedSession(page, 'harbor');
+  });
+
   for (const route of ROUTES) {
     test(`${route} has exactly one h1 and a landmark structure`, async ({
       page,
@@ -41,8 +47,7 @@ test.describe('accessibility', () => {
   }) => {
     await page.goto('/');
 
-    // The app bootstraps after the load event. `count()` does not auto-wait;
-    // wait for the header first.
+    // `count()` does not auto-wait; wait for the header first.
     await expect(page.locator('header').first()).toBeVisible();
 
     // The header hides controls per breakpoint, so only the visible ones are in

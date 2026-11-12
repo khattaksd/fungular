@@ -18,9 +18,13 @@
     "SETTINGS": "Configurações",
     "UNAVAILABLE": "Em breve",
     "NAV_SECTION": "Navegar",
-    "NAV_HOME": "Início",
-    "NAV_PROFILE": "Perfil",
-    "POWERED_BY": "Desenvolvido por"
+    "POWERED_BY": "Desenvolvido por",
+    "NAV_DASHBOARD": "Painel",
+    "NAV_PROJECTS": "Projetos",
+    "NAV_TASKS": "Tarefas",
+    "NAV_TEAM": "Equipa",
+    "NAV_SETTINGS": "Definições",
+    "NAV_BILLING": "Faturação"
   },
   "LANGUAGE_SELECT": {
     "TRIGGER_ARIA": "Alterar idioma",
@@ -56,22 +60,94 @@
     "LANGUAGE": "Idioma",
     "LANGUAGE_DESC": "Aplica-se imediatamente a toda a aplicação.",
     "REDUCE_MOTION": "Reduzir movimento",
-    "REDUCE_MOTION_DESC": "Minimiza transições e efeitos animados."
+    "REDUCE_MOTION_DESC": "Minimiza transições e efeitos animados.",
+    "TENANT_HEADING": "Espaço de trabalho",
+    "TENANT_NAME": "Nome do espaço de trabalho",
+    "SAVE": "Guardar",
+    "SAVING": "A guardar…",
+    "SAVED": "Guardado",
+    "UPLOAD_LOGO": "Carregar logo",
+    "TENANT_DESC": "Tenant name and logo — demo data, saved via the mock API."
   },
-  "HOME": {
-    "TITLE": "fungular",
-    "KICKER": "Um playground Angular neutro",
-    "LEAD": "Um esqueleto genérico de monorepo Angular 22: API simulada no navegador, saída pronta para hospedagem estática, analytics independente de fornecedor e arquitetura imposta por lint — livre para experimentar.",
-    "CTA_PROFILE": "Abrir perfil",
-    "CTA_SETTINGS": "Personalizar definições",
-    "FEATURES": "O que inclui",
-    "FEATURE_MOCK": "API simulada na Cloudflare — o app roda sem backend.",
-    "FEATURE_THEME": "Tema claro/escuro que segue o sistema operativo.",
-    "FEATURE_I18N": "Oito idiomas, incluindo RTL.",
-    "BRANDS_LABEL": "Marca de demonstração",
-    "BRAND_SOLSTICE": "Solstice",
-    "BRAND_HARBOR": "Harbor",
-    "BRAND_MEADOW": "Meadow",
-    "FEATURE_BRANDS": "Três marcas de demonstração mudam a paleta ao vivo."
+  "SESSION": {
+    "TITLE": "Session",
+    "LEAD": "Session overview.",
+    "LOADING": "Loading…",
+    "ERROR": "Something went wrong."
+  },
+  "PROJECTS": {
+    "TITLE": "Projetos",
+    "LEAD": "Everything the team is shipping, for this workspace.",
+    "ACTIVE": "ativos",
+    "STATUS_active": "Ativo",
+    "STATUS_on-hold": "Em pausa",
+    "STATUS_archived": "Arquivado",
+    "TASKS": "tarefas",
+    "TASKS_HEADING": "Tarefas",
+    "MEMBERS_HEADING": "Membros"
+  },
+  "TASKS": {
+    "TITLE": "Tarefas",
+    "LEAD": "The workspace's task list — filter by status, priority or search.",
+    "SEARCH": "Procurar tarefas",
+    "OF": "de",
+    "STATUS_FILTER": "Estado",
+    "PRIORITY_FILTER": "Prioridade",
+    "FILTER_ALL": "Todas",
+    "FILTER_TODO": "Por fazer",
+    "FILTER_IN_PROGRESS": "Em curso",
+    "FILTER_DONE": "Concluídas",
+    "PRIORITY_ALL": "Todas",
+    "PRIORITY_HIGH": "Alta",
+    "PRIORITY_MEDIUM": "Média",
+    "PRIORITY_LOW": "Baixa",
+    "STATUS_todo": "Por fazer",
+    "STATUS_in_progress": "Em curso",
+    "STATUS_done": "Concluída",
+    "PROJECT": "Projeto"
+  },
+  "TEAM": {
+    "TITLE": "Equipa",
+    "LEAD": "membros ativos",
+    "STATUS_active": "Ativo",
+    "STATUS_invited": "Convidado"
+  },
+  "BILLING": {
+    "TITLE": "Faturação",
+    "LEAD": "Plan, usage and invoices for this workspace.",
+    "PLAN": "Plano",
+    "SEATS": "lugares",
+    "USAGE_HEADING": "Utilização",
+    "INVOICES_HEADING": "Faturas",
+    "NO_INVOICES": "Ainda sem faturas.",
+    "STATUS_paid": "Paga",
+    "STATUS_due": "Em dívida"
+  },
+  "SHARED": {
+    "LOADING": "A carregar…",
+    "DUE": "Fim",
+    "BACK": "Voltar",
+    "PROGRESS": "Progresso"
+  },
+  "AUTH": {
+    "SIGN_IN": "Iniciar sessão",
+    "SIGN_IN_HINT": "Início de sessão de demonstração: qualquer e-mail e palavra-passe válidos funcionam.",
+    "EMAIL": "E-mail",
+    "PASSWORD": "Palavra-passe",
+    "CONTINUE": "Iniciar sessão",
+    "SIGNING_IN": "A iniciar sessão…",
+    "DEMO_HINT": "Dica: single@example.com entra num único espaço de trabalho.",
+    "CHOOSE_WORKSPACE": "Escolha um espaço de trabalho",
+    "CHOOSE_WORKSPACE_HINT": "Pertence a vários espaços — escolha um.",
+    "SIGN_OUT": "Terminar sessão"
+  },
+  "DASHBOARD": {
+    "GREETING_MORNING": "Bom dia, {{name}}.",
+    "GREETING_AFTERNOON": "Boa tarde, {{name}}.",
+    "GREETING_EVENING": "Boa noite, {{name}}.",
+    "LEAD": "O seu espaço de trabalho em resumo",
+    "PROJECTS": "Projetos",
+    "ACTIVITY": "Atividade recente",
+    "VIEW_TASKS": "Ver todas as tarefas"
   }
 }

@@ -8,6 +8,7 @@ import {
   SwitchComponent,
 } from '@libs/ui';
 import { TranslatePipe } from '@ngx-translate/core';
+import { TenantSettingsComponent } from '../../molecules/tenant-settings/tenant-settings';
 import { SettingsStore } from '../../+state/settings.store';
 import { SettingRowComponent } from '../../molecules/setting-row/setting-row';
 
@@ -38,6 +39,7 @@ const LANGUAGE_OPTIONS: readonly SegmentedControlOption<Language>[] = (
     SegmentedControlComponent,
     SettingRowComponent,
     SwitchComponent,
+    TenantSettingsComponent,
     TranslatePipe,
   ],
   templateUrl: './settings.html',

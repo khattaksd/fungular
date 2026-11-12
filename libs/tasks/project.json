@@ -1,0 +1,31 @@
+{
+  "name": "tasks",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/tasks/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": [
+    "scope:tasks"
+  ],
+  "targets": {
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "coverageInclude": [
+          "libs/tasks/src/**/*.ts"
+        ],
+        "coverageExclude": [
+          "libs/tasks/src/**/index.ts",
+          "libs/tasks/src/**/*.routes.ts",
+          "libs/tasks/src/**/*.spec.ts"
+        ],
+        "coverageThresholds": {
+          "statements": 74,
+          "branches": 88,
+          "functions": 79,
+          "lines": 70
+        }
+      }
+    }
+  }
+}

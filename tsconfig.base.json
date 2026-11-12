@@ -17,7 +17,12 @@
       "@libs/translation": ["libs/shared/translation/src/index.ts"],
       "@libs/analytics": ["./libs/shared/analytics/src/index.ts"],
       "@libs/settings": ["./libs/settings/src/index.ts"],
-      "@app/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
+      "@app/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
+      "@libs/session": ["libs/session/src/index.ts"],
+      "@libs/projects": ["libs/projects/src/index.ts"],
+      "@libs/tasks": ["libs/tasks/src/index.ts"],
+      "@libs/team": ["libs/team/src/index.ts"],
+      "@libs/billing": ["libs/billing/src/index.ts"]
     },
     "strict": true,
     "noUncheckedSideEffectImports": false,

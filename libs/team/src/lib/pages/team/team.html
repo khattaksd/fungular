@@ -1,0 +1,37 @@
+<main class="mx-auto max-w-4xl px-4 py-10">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <h1 class="text-3xl font-bold tracking-tight text-neutral-900">
+        {{ 'TEAM.TITLE' | translate }}
+      </h1>
+      <p class="mt-1 text-neutral-600">
+        {{ store.activeCount() }} {{ 'TEAM.LEAD' | translate }}
+      </p>
+    </div>
+  </div>
+
+  @if (store.loading()) {
+  <p class="mt-16 text-center text-neutral-500">{{ 'SHARED.LOADING' | translate }}</p>
+  } @else if (store.errorMessage(); as message) {
+  <p role="alert" class="mt-16 text-center font-medium text-red-600">{{ message }}</p>
+  } @else {
+  <ul class="mt-8 space-y-2">
+    @for (member of store.members(); track member.id) {
+    <li class="flex items-center gap-4 rounded-2xl border border-neutral-200 bg-white px-4 py-3">
+      <lib-avatar [name]="member.name" />
+      <div class="flex-1">
+        <p class="font-semibold text-neutral-900">{{ member.name }}</p>
+        <p class="text-sm text-neutral-500">{{ member.email }}</p>
+      </div>
+      <lib-badge [tone]="roleTone(member.role)">{{ member.role }}</lib-badge>
+      <lib-badge
+        [tone]="member.status === 'active' ? 'success' : 'warning'"
+        size="sm"
+        [pill]="true"
+        >{{ 'TEAM.STATUS_' + member.status | translate }}</lib-badge
+      >
+    </li>
+    }
+  </ul>
+  }
+</main>

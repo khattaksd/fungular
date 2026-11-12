@@ -69,12 +69,47 @@
     [ngTemplateOutletContext]="{ $implicit: items() }"
   />
 
-  @if (tenantLabel(); as label) {
+  @if (workspaces().length > 0) {
   <hr class="nav__rule" />
-  <span class="nav__link nav__link--static">
-    <lib-icon name="leaf" size="md" />
-    <span class="nav__label">{{ label }}</span>
-  </span>
+  <div class="nav__workspace">
+    <button
+      type="button"
+      class="nav__link nav__workspace-trigger"
+      [attr.aria-expanded]="switcherOpen()"
+      [attr.aria-haspopup]="'menu'"
+      (click)="toggleSwitcher()"
+    >
+      @if (activeWorkspace(); as workspace) {
+      @if (workspace.logoUrl) {
+      <img
+        [src]="workspace.logoUrl"
+        [alt]=""
+        class="nav__workspace-logo"
+        aria-hidden="true"
+      />
+      }
+      <span class="nav__label">{{ workspace.label }}</span>
+      <lib-icon name="chevron-down" size="sm" class="nav__workspace-chevron" />
+      }
+    </button>
+    @if (switcherOpen()) {
+    <div role="menu" class="nav__workspace-menu">
+      @for (workspace of workspaces(); track workspace.id) {
+      <button
+        type="button"
+        role="menuitem"
+        (click)="selectWorkspace(workspace.id)"
+        [class.nav__workspace-menu--active]="workspace.active"
+      >
+        <span class="nav__label">{{ workspace.label }}</span>
+        @if (workspace.active) {
+        <lib-icon name="check" size="sm" />
+        }
+      </button>
+      }
+    </div>
+    }
+  </div>
   }
 
   <div class="nav__foot">

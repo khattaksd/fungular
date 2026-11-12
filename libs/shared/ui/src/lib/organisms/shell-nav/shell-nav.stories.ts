@@ -4,6 +4,7 @@ import {
   FOOTER_ITEMS,
   NAV_ITEMS,
   PLATFORM_LOGO,
+  WORKSPACES,
 } from '../../../../.storybook/shell-fixtures';
 import { ShellNavComponent } from './shell-nav';
 
@@ -15,9 +16,9 @@ const meta: Meta<ShellNavComponent> = {
     return {
       props: {
         ...args,
-        tenantLabel: brand.tenantLabel,
         tagline: brand.tagline,
         taglineSub: brand.taglineSub,
+        workspaces: WORKSPACES,
         platformLogo: PLATFORM_LOGO,
       },
     };

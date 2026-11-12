@@ -104,7 +104,7 @@ describe('ShellComponent', () => {
     expect(spectator.query('.bar__logo img')).toBeNull();
   });
 
-  it('shows the brand space, tagline and platform mark when given', () => {
+  it('shows the brand tagline and platform mark when given', () => {
     spectator = createComponent({
       props: {
         navItems: ITEMS,
@@ -113,11 +113,27 @@ describe('ShellComponent', () => {
       },
     });
 
-    expect(spectator.query('.nav__link--static')).toHaveText('Our Solstice');
     expect(spectator.query('.nav__tagline')).toHaveText(
       'Sunrise, engineered.',
     );
     expect(spectator.query('.nav__powered')).toHaveText('Powered by');
+  });
+
+  it('forwards the selected workspace from the switcher', () => {
+    spectator = createComponent({
+      props: {
+        navItems: ITEMS,
+        workspaces: [{ id: 'harbor', label: 'Harbor' }],
+      },
+    });
+
+    const selected = vi.fn();
+    spectator.component.workspaceSelected.subscribe(selected);
+
+    spectator.click('.nav__workspace-trigger');
+    spectator.click(spectator.query('.nav__workspace-menu button') as HTMLElement);
+
+    expect(selected).toHaveBeenCalledWith('harbor');
   });
 
   it('projects the routed page into the content area', () => {

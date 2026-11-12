@@ -200,3 +200,61 @@
     display: none;
   }
 }
+
+/* ── Workspace switcher ─────────────────────────────────────────────── */
+
+.nav__workspace {
+  position: relative;
+}
+
+.nav__workspace-trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+.nav__workspace-logo {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+}
+
+.nav__workspace-chevron {
+  margin-inline-start: auto;
+  color: var(--color-text-muted);
+}
+
+/* Opens upward so a long menu never folds under the viewport. */
+.nav__workspace-menu {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: var(--space-2);
+  right: var(--space-2);
+  z-index: var(--z-popover);
+  padding: var(--space-1);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-dropdown);
+}
+
+.nav__workspace-menu button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.nav__workspace-menu button:hover {
+  background: var(--color-bg-hover);
+}
+
+.nav__workspace-menu--active {
+  font-weight: 600;
+}

@@ -1,26 +1,39 @@
 import { expect, test } from '@playwright/test';
+import { seedSession } from './support/session';
 
 /**
- * Routing, lazy loading and the 404 fallback.
+ * Routing, auth guards, lazy loading and the 404 fallback.
  *
- * These are the parts a unit test can only assert trivially: `pages.routes.ts`
- * declares a `loadChildren`, and whether that chunk actually resolves depends on
- * the build, not on the declaration.
+ * These are the parts a unit test can only assert trivially: `loadChildren`
+ * declarations, `canActivate` guards and whether a chunk actually resolves
+ * depends on the build, not on the declaration.
  */
 test.describe('navigation', () => {
-  test('renders the home page', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
+    await seedSession(page, 'harbor');
+  });
+
+  test('renders the dashboard for a signed-in user', async ({ page }) => {
     await page.goto('/');
 
     await expect(page.locator('h1')).toBeVisible();
-    await expect(page).toHaveTitle(/.+/);
+    await expect(page).toHaveURL(/\/$/);
+  });
+
+  test('sends a signed-out user from a tenant page to the login page', async ({
+    page,
+  }) => {
+    // No seed in this test on purpose: the guard must catch a fresh visitor.
+    await page.addInitScript(() => localStorage.clear());
+    await page.goto('/billing');
+
+    await expect(page).toHaveURL(/\/login/);
   });
 
   test('lazy-loads the profile feature', async ({ page }) => {
     await page.goto('/profile');
 
     await expect(page).toHaveURL(/\/profile$/);
-    // Either the loaded profile or its error state — the API is not running in CI.
-    // Both prove the lazy chunk resolved and the route's providers were created.
     await expect(page.locator('lib-profile')).toBeVisible();
   });
 
@@ -29,26 +42,6 @@ test.describe('navigation', () => {
 
     await expect(page.locator('lib-settings')).toBeVisible();
     await expect(page.getByRole('radiogroup')).toHaveCount(2);
-  });
-
-  test('demo brands re-theme the page from the URL and from the switcher', async ({
-    page,
-  }) => {
-    const brandVar = () =>
-      page.evaluate(() =>
-        getComputedStyle(document.documentElement)
-          .getPropertyValue('--color-brand')
-          .trim(),
-      );
-
-    // `?brand=` is applied at startup (the app initializer fetches the JSON),
-    // and the switcher applies one without a reload. The 10s poll covers a
-    // cold first run where branding loads at the far end of its 3s timeout.
-    await page.goto('/?brand=harbor');
-    await expect.poll(brandVar, { timeout: 10_000 }).toBe('#0e7490');
-
-    await page.getByRole('button', { name: 'Meadow' }).click();
-    await expect.poll(brandVar, { timeout: 10_000 }).toBe('#3f6212');
   });
 
   test('falls back to the not-found page for an unknown route', async ({
@@ -66,7 +59,8 @@ test.describe('navigation', () => {
     // Wait for the exact translated titles rather than a "not the placeholder"
     // guard: reading page.title() right after goto can race the TitleStrategy.
     // toHaveTitle retries until the route's own title lands. APP_TITLE is
-    // 'fungular'; the home route has no title so it falls back to that alone.
+    // 'fungular'; the dashboard route has no title so it falls back to that
+    // alone.
     await page.goto('/');
     await expect(page).toHaveTitle('fungular');
 

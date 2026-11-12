@@ -1,7 +1,13 @@
+import { provideHttpClient } from '@angular/common/http';
+import {
+  HttpTestingController,
+  provideHttpClientTesting,
+} from '@angular/common/http/testing';
 import { Language } from '@libs/entity';
 import { ThemeService } from '@libs/theme';
 import { UpdateLanguageService } from '@libs/translation';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/vitest';
+import { TenantSettingsService } from '../../services/tenant-settings/tenant-settings.service';
 import {
   TranslateLoader,
   TranslationObject,
@@ -53,6 +59,9 @@ describe('Settings', () => {
       // Normally provided by the settings route, so a component-level test has to
       // register it explicitly.
       SettingsStore,
+      TenantSettingsService,
+      provideHttpClient(),
+      provideHttpClientTesting(),
       provideTranslateService({
         loader: [{ provide: TranslateLoader, useClass: StubTranslateLoader }],
         lang: 'en',
@@ -61,17 +70,34 @@ describe('Settings', () => {
     ],
   });
 
-  beforeEach(() => {
+  /** The tenant panel fetches workspace settings on init; answer it. */
+  const flushTenant = async (): Promise<void> => {
+    spectator.inject(HttpTestingController).expectOne('/api/settings').flush({
+      name: 'Solstice',
+      domain: 'solstice.dev',
+      seats: 5,
+      seatsUsed: 5,
+      logo: './assets/logo.svg',
+    });
+    // The fetch resolves on a microtask after flush; let it land, then render.
+    await spectator.fixture.whenStable();
+    spectator.detectChanges();
+  };
+
+  beforeEach(async () => {
     localStorage.clear();
     document.documentElement.classList.remove('reduce-motion');
     themeService.setPreference.mockReset();
     languageService.changeLanguage.mockReset();
     spectator = createComponent();
     spectator.detectChanges();
+    await flushTenant();
   });
 
-  it('renders one row per setting', () => {
-    expect(spectator.queryAll('lib-setting-row')).toHaveLength(3);
+  it('renders the preference rows plus the workspace panel', () => {
+    expect(spectator.queryAll('lib-setting-row').length).toBeGreaterThanOrEqual(3);
+    expect(spectator.query('lib-tenant-settings')).toBeTruthy();
+    expect(spectator.element.textContent).toContain('Solstice');
   });
 
   it('renders the translated labels rather than raw keys', () => {

@@ -2,8 +2,12 @@ import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
+  ElementRef,
+  inject,
   input,
   output,
+  signal,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -30,13 +34,21 @@ export interface ShellLogo {
   alt: string;
 }
 
+/** One workspace (tenant) offered by the switcher under the active tenant. */
+export interface WorkspaceItem {
+  id: string;
+  label: string;
+  logoUrl?: string;
+  active?: boolean;
+}
+
 /**
- * The shell's left navigation: the app's destinations, the brand's own space,
+ * The shell's left navigation: the app's destinations, a workspace switcher,
  * a tagline, support links and the platform mark.
  *
- * Presentational — the app supplies the items and the brand copy, so the shell
- * never imports a feature. Collapsed, it becomes an icon rail with the label
- * under each icon.
+ * Presentational — the app supplies the items, the workspaces and the brand
+ * copy, so the shell never imports a feature. Collapsed, it becomes an icon
+ * rail with the label under each icon.
  */
 @Component({
   selector: 'lib-shell-nav',
@@ -56,8 +68,8 @@ export class ShellNavComponent {
   readonly items = input.required<readonly ShellNavItem[]>();
   readonly footerItems = input<readonly ShellNavItem[]>([]);
   readonly collapsed = input(false);
-  /** The brand's own space, e.g. "Our Solstice". */
-  readonly tenantLabel = input<string | null>(null);
+  /** The user's workspaces; the active one is highlighted. Empty = no switcher. */
+  readonly workspaces = input<readonly WorkspaceItem[]>([]);
   readonly tagline = input<string | null>(null);
   readonly taglineSub = input<string | null>(null);
   /** The platform behind every brand ("Powered by ..."), not the brand's logo. */
@@ -66,4 +78,30 @@ export class ShellNavComponent {
   readonly collapseToggled = output<void>();
   /** Fired when a destination is chosen, so a drawer can close itself. */
   readonly navigated = output<void>();
+  /** Fired when the user picks another workspace from the switcher. */
+  readonly workspaceSelected = output<string>();
+
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  /** The workspace shown on the trigger: the active one, or the first. */
+  protected readonly activeWorkspace = computed(
+    () => this.workspaces().find((ws) => ws.active) ?? this.workspaces()[0] ?? null,
+  );
+  protected readonly switcherOpen = signal(false);
+
+  protected toggleSwitcher(): void {
+    this.switcherOpen.update((value) => !value);
+  }
+
+  protected selectWorkspace(id: string): void {
+    this.switcherOpen.set(false);
+    this.workspaceSelected.emit(id);
+  }
+
+  /** Clicking anywhere outside the switcher closes it. */
+  protected onDocClick(event: MouseEvent): void {
+    if (this.switcherOpen() && !this.host.nativeElement.contains(event.target as Node)) {
+      this.switcherOpen.set(false);
+    }
+  }
 }

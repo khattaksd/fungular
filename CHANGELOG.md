@@ -25,5 +25,14 @@ Notable changes, newest first.
   `--color-*` seam so they read on both themes.
 - fungular mark: a flat navy peak-and-sunrise logo (`assets/logo.svg`) used as
   favicon, header logo, brand logo and the "Powered by" platform mark.
+- Multi-tenant app shell: fake sign-in (`any@example.com`), workspace chooser
+  for multi-tenant users, and a sidebar tenant switcher that re-themes and
+  swaps the entire dataset. New features: dashboard, projects (+detail),
+  tasks (filterable), team, billing; settings gains a workspace panel.
+- Mock API (Pages Function) now keyed by `X-Tenant-Id`, with auth and
+  per-tenant projects/tasks/team/settings/billing data.
+- e2e suite reworked: seeded-session specs plus a real login → chooser →
+  tenant-switch flow; `auth.guards` split into guest-only/require-auth/tenant
+  guards so the login route cannot redirect-loop.
 - Vendor-neutral analytics seam retained from the source codebase; PostHog
   implementation planned (`libs/shared/analytics-posthog`).

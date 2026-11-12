@@ -106,18 +106,21 @@ describe('ShellNavComponent', () => {
     expect(navigated).toHaveBeenCalledTimes(1);
   });
 
-  it('shows the brand space, tagline and platform mark when given', () => {
+  it('shows the active workspace and tagline, and opens the switcher', () => {
     spectator = createComponent({
       props: {
         items: ITEMS,
-        tenantLabel: 'Our Solstice',
         tagline: 'Sunrise, engineered.',
         taglineSub: 'A demo brand.',
         platformLogo: { url: '/platform.svg', alt: 'fungular' },
+        workspaces: [
+          { id: 'harbor', label: 'Harbor', active: true },
+          { id: 'meadow', label: 'Meadow' },
+        ],
       },
     });
 
-    expect(spectator.query('.nav__link--static')).toHaveText('Our Solstice');
+    expect(spectator.query('.nav__workspace-trigger')).toHaveText('Harbor');
     expect(spectator.query('.nav__tagline')).toHaveText(
       'Sunrise, engineered.',
     );
@@ -127,12 +130,37 @@ describe('ShellNavComponent', () => {
       'alt',
       'fungular',
     );
+
+    spectator.click('.nav__workspace-trigger');
+    expect(spectator.query('.nav__workspace-menu')).toBeTruthy();
+    expect(spectator.queryAll('.nav__workspace-menu button')).toHaveLength(2);
   });
 
-  it('omits the brand block and tagline when there is none', () => {
+  it('emits the chosen workspace and closes the switcher', () => {
+    spectator = createComponent({
+      props: {
+        items: ITEMS,
+        workspaces: [
+          { id: 'harbor', label: 'Harbor', active: true },
+          { id: 'meadow', label: 'Meadow' },
+        ],
+      },
+    });
+
+    const selected = vi.fn();
+    spectator.component.workspaceSelected.subscribe(selected);
+
+    spectator.click('.nav__workspace-trigger');
+    spectator.click(spectator.queryAll('.nav__workspace-menu button')[1] as HTMLElement);
+
+    expect(selected).toHaveBeenCalledWith('meadow');
+    expect(spectator.query('.nav__workspace-menu')).toBeNull();
+  });
+
+  it('omits the tagline and switcher when none are given', () => {
     spectator = createComponent({ props: { items: ITEMS } });
 
-    expect(spectator.query('.nav__link--static')).toBeNull();
+    expect(spectator.query('.nav__workspace-trigger')).toBeNull();
     expect(spectator.query('.nav__tagline')).toBeNull();
     expect(spectator.query('.nav__powered')).toBeNull();
   });

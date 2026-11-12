@@ -60,6 +60,61 @@ const depConstraints = [
   // Workspace tooling (generators). Depends on nothing in the workspace.
   { sourceTag: 'scope:tooling', onlyDependOnLibsWithTags: [] },
 
+  {
+    sourceTag: 'scope:session',
+    onlyDependOnLibsWithTags: [
+      'scope:entity-lib',
+      'scope:environment-lib',
+      'scope:theme-lib',
+      'scope:translate',
+      'scope:ui-lib',
+    ],
+  },
+
+  {
+    sourceTag: 'scope:projects',
+    onlyDependOnLibsWithTags: [
+      'scope:entity-lib',
+      'scope:environment-lib',
+      'scope:theme-lib',
+      'scope:translate',
+      'scope:ui-lib',
+    ],
+  },
+
+  {
+    sourceTag: 'scope:tasks',
+    onlyDependOnLibsWithTags: [
+      'scope:entity-lib',
+      'scope:environment-lib',
+      'scope:theme-lib',
+      'scope:translate',
+      'scope:ui-lib',
+    ],
+  },
+
+  {
+    sourceTag: 'scope:team',
+    onlyDependOnLibsWithTags: [
+      'scope:entity-lib',
+      'scope:environment-lib',
+      'scope:theme-lib',
+      'scope:translate',
+      'scope:ui-lib',
+    ],
+  },
+
+  {
+    sourceTag: 'scope:billing',
+    onlyDependOnLibsWithTags: [
+      'scope:entity-lib',
+      'scope:environment-lib',
+      'scope:theme-lib',
+      'scope:translate',
+      'scope:ui-lib',
+    ],
+  },
+
   // <feature-scopes> — the feature-lib generator inserts new feature entries
   // above this line. Keep the marker.
 
@@ -76,6 +131,11 @@ const depConstraints = [
       'scope:theme-lib',
       'scope:translate',
       'scope:ui-lib',
+      'scope:session',
+      'scope:projects',
+      'scope:tasks',
+      'scope:team',
+      'scope:billing',
       // <demo-app-feature-scopes> — the feature-lib generator inserts new
       // scopes above this line. Keep the marker.
     ],

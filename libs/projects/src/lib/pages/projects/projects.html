@@ -1,0 +1,50 @@
+<main class="mx-auto max-w-5xl px-4 py-10">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <h1 class="text-3xl font-bold tracking-tight text-neutral-900">
+        {{ 'PROJECTS.TITLE' | translate }}
+      </h1>
+      <p class="mt-1 text-neutral-600">{{ 'PROJECTS.LEAD' | translate }}</p>
+    </div>
+    <lib-badge tone="info" pill>{{ store.activeCount() }} {{ 'PROJECTS.ACTIVE' | translate }}</lib-badge>
+  </div>
+
+  @if (store.loading()) {
+  <p class="mt-16 text-center text-neutral-500">{{ 'SHARED.LOADING' | translate }}</p>
+  } @else if (store.errorMessage(); as message) {
+  <p role="alert" class="mt-16 text-center font-medium text-red-600">{{ message }}</p>
+  } @else {
+  <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    @for (project of store.projects(); track project.id) {
+    <li>
+      <a
+        [routerLink]="['/projects', project.id]"
+        class="block rounded-2xl border border-neutral-200 bg-white p-5 transition-colors hover:border-neutral-300 hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+      >
+        <span class="flex items-center justify-between gap-2">
+          <span class="font-semibold text-neutral-900">{{ project.name }}</span>
+          <lib-badge
+            [tone]="project.status === 'active' ? 'success' : project.status === 'on-hold' ? 'warning' : 'neutral'"
+            size="sm"
+            >{{ 'PROJECTS.STATUS_' + project.status | translate }}</lib-badge
+          >
+        </span>
+        <span class="mt-2 block text-sm leading-relaxed text-neutral-600">{{
+          project.description
+        }}</span>
+        <span class="mt-4 block">
+          <lib-progress [value]="project.progress" [label]="project.name" size="sm" />
+        </span>
+        <span class="mt-2 flex justify-between text-xs text-neutral-500">
+          <span>
+            {{ project.tasks.done }}/{{ project.tasks.total }}
+            {{ 'PROJECTS.TASKS' | translate }}
+          </span>
+          <span>{{ 'SHARED.DUE' | translate }} {{ project.due }}</span>
+        </span>
+      </a>
+    </li>
+    }
+  </ul>
+  }
+</main>

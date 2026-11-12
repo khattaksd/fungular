@@ -8,6 +8,7 @@ import {
   Injector,
   input,
   linkedSignal,
+  output,
 } from '@angular/core';
 import { BrandTheme } from '@libs/theme';
 import { Layout, ViewportService } from '../../core/viewport.service';
@@ -16,6 +17,7 @@ import {
   ShellLogo,
   ShellNavComponent,
   ShellNavItem,
+  WorkspaceItem,
 } from '../shell-nav/shell-nav';
 
 const FOCUSABLE = 'a[href], button:not([disabled])';
@@ -50,10 +52,13 @@ export class ShellComponent {
   readonly navItems = input.required<readonly ShellNavItem[]>();
   readonly footerItems = input<readonly ShellNavItem[]>([]);
   readonly brand = input<BrandTheme | null>(null);
+  readonly workspaces = input<readonly WorkspaceItem[]>([]);
   readonly platformLogo = input<ShellLogo | null>(null);
   readonly userName = input('');
   readonly userAvatarUrl = input<string | null>(null);
   readonly hasUnread = input(false);
+
+  readonly workspaceSelected = output<string>();
 
   /** Icon rail rather than the full sidebar; follows the layout, and the user may override it. */
   protected readonly collapsed = linkedSignal(() => this.layout() === 'tablet');

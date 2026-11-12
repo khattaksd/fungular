@@ -1,0 +1,31 @@
+{
+  "name": "billing",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/billing/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": [
+    "scope:billing"
+  ],
+  "targets": {
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "coverageInclude": [
+          "libs/billing/src/**/*.ts"
+        ],
+        "coverageExclude": [
+          "libs/billing/src/**/index.ts",
+          "libs/billing/src/**/*.routes.ts",
+          "libs/billing/src/**/*.spec.ts"
+        ],
+        "coverageThresholds": {
+          "statements": 70,
+          "branches": 72,
+          "functions": 75,
+          "lines": 65
+        }
+      }
+    }
+  }
+}

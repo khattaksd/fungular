@@ -18,9 +18,13 @@
     "SETTINGS": "الإعدادات",
     "UNAVAILABLE": "قريباً",
     "NAV_SECTION": "تنقل",
-    "NAV_HOME": "الرئيسية",
-    "NAV_PROFILE": "الملف الشخصي",
-    "POWERED_BY": "مدعوم بواسطة"
+    "POWERED_BY": "مدعوم بواسطة",
+    "NAV_DASHBOARD": "الرئيسية",
+    "NAV_PROJECTS": "المشاريع",
+    "NAV_TASKS": "المهام",
+    "NAV_TEAM": "الفريق",
+    "NAV_SETTINGS": "الإعدادات",
+    "NAV_BILLING": "الفوترة"
   },
   "LANGUAGE_SELECT": {
     "TRIGGER_ARIA": "تغيير اللغة",
@@ -56,22 +60,94 @@
     "LANGUAGE": "اللغة",
     "LANGUAGE_DESC": "يُطبَّق فوراً على التطبيق بأكمله.",
     "REDUCE_MOTION": "تقليل الحركة",
-    "REDUCE_MOTION_DESC": "يقلل الانتقالات والتأثيرات المتحركة."
+    "REDUCE_MOTION_DESC": "يقلل الانتقالات والتأثيرات المتحركة.",
+    "TENANT_HEADING": "مساحة العمل",
+    "TENANT_NAME": "اسم مساحة العمل",
+    "SAVE": "حفظ",
+    "SAVING": "جارٍ الحفظ…",
+    "SAVED": "تم الحفظ",
+    "UPLOAD_LOGO": "رفع الشعار",
+    "TENANT_DESC": "Tenant name and logo — demo data, saved via the mock API."
   },
-  "HOME": {
-    "TITLE": "fungular",
-    "KICKER": "منصة تجريبية محايدة لـ Angular",
-    "LEAD": "هيكل عام لمراقبة Angular 22: واجهة API وهمية في المتصفح، مخرجات جاهزة للاستضافة الثابتة، تحليلات محايدة للبائع، وهندسة تفرضها قواعد الفحص — حر للتجربة.",
-    "CTA_PROFILE": "افتح الملف الشخصي",
-    "CTA_SETTINGS": "تخصيص الإعدادات",
-    "FEATURES": "ماذا يوجد بالداخل",
-    "FEATURE_MOCK": "واجهة API وهمية على Cloudflare — يعمل التطبيق بدون خادم خلفي.",
-    "FEATURE_THEME": "مظهر فاتح/داكن يتبع نظام التشغيل.",
-    "FEATURE_I18N": "ثماني لغات، بما فيها RTL.",
-    "BRANDS_LABEL": "علامة تجريبية",
-    "BRAND_SOLSTICE": "سولستيس",
-    "BRAND_HARBOR": "هاربور",
-    "BRAND_MEADOW": "ميدو",
-    "FEATURE_BRANDS": "ثلاث علامات تجريبية تبدّل اللوحة مباشرةً."
+  "SESSION": {
+    "TITLE": "Session",
+    "LEAD": "Session overview.",
+    "LOADING": "Loading…",
+    "ERROR": "Something went wrong."
+  },
+  "PROJECTS": {
+    "TITLE": "المشاريع",
+    "LEAD": "Everything the team is shipping, for this workspace.",
+    "ACTIVE": "نشطة",
+    "STATUS_active": "نشط",
+    "STATUS_on-hold": "معلق",
+    "STATUS_archived": "مؤرشف",
+    "TASKS": "مهام",
+    "TASKS_HEADING": "المهام",
+    "MEMBERS_HEADING": "الأعضاء"
+  },
+  "TASKS": {
+    "TITLE": "المهام",
+    "LEAD": "The workspace's task list — filter by status, priority or search.",
+    "SEARCH": "ابحث في المهام",
+    "OF": "من",
+    "STATUS_FILTER": "الحالة",
+    "PRIORITY_FILTER": "الأولوية",
+    "FILTER_ALL": "الكل",
+    "FILTER_TODO": "للتنفيذ",
+    "FILTER_IN_PROGRESS": "قيد التنفيذ",
+    "FILTER_DONE": "مكتملة",
+    "PRIORITY_ALL": "الكل",
+    "PRIORITY_HIGH": "عالية",
+    "PRIORITY_MEDIUM": "متوسطة",
+    "PRIORITY_LOW": "منخفضة",
+    "STATUS_todo": "للتنفيذ",
+    "STATUS_in_progress": "قيد التنفيذ",
+    "STATUS_done": "مكتملة",
+    "PROJECT": "المشروع"
+  },
+  "TEAM": {
+    "TITLE": "الفريق",
+    "LEAD": "أعضاء نشطون",
+    "STATUS_active": "نشط",
+    "STATUS_invited": "مدعو"
+  },
+  "BILLING": {
+    "TITLE": "الفوترة",
+    "LEAD": "Plan, usage and invoices for this workspace.",
+    "PLAN": "الخطة",
+    "SEATS": "مقاعد",
+    "USAGE_HEADING": "الاستخدام",
+    "INVOICES_HEADING": "الفواتير",
+    "NO_INVOICES": "لا توجد فواتير بعد.",
+    "STATUS_paid": "مدفوعة",
+    "STATUS_due": "مستحقة"
+  },
+  "SHARED": {
+    "LOADING": "جارٍ التحميل…",
+    "DUE": "يستحق",
+    "BACK": "رجوع",
+    "PROGRESS": "التقدم"
+  },
+  "AUTH": {
+    "SIGN_IN": "تسجيل الدخول",
+    "SIGN_IN_HINT": "دخول تجريبي: أي بريد إلكتروني وكلمة مرور صالحين.",
+    "EMAIL": "البريد الإلكتروني",
+    "PASSWORD": "كلمة المرور",
+    "CONTINUE": "دخول",
+    "SIGNING_IN": "جارٍ الدخول…",
+    "DEMO_HINT": "نصيحة: single@example.com يدخل إلى مساحة عمل واحدة.",
+    "CHOOSE_WORKSPACE": "اختر مساحة العمل",
+    "CHOOSE_WORKSPACE_HINT": "أنت تنتمي إلى عدة مساحات — اختر واحدة.",
+    "SIGN_OUT": "تسجيل الخروج"
+  },
+  "DASHBOARD": {
+    "GREETING_MORNING": "صباح الخير، {{name}}.",
+    "GREETING_AFTERNOON": "طاب مساؤك، {{name}}.",
+    "GREETING_EVENING": "مساء الخير، {{name}}.",
+    "LEAD": "مساحة عملك في لمحة",
+    "PROJECTS": "المشاريع",
+    "ACTIVITY": "النشاط الأخير",
+    "VIEW_TASKS": "عرض كل المهام"
   }
 }

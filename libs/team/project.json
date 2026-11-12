@@ -1,0 +1,31 @@
+{
+  "name": "team",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/team/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": [
+    "scope:team"
+  ],
+  "targets": {
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "coverageInclude": [
+          "libs/team/src/**/*.ts"
+        ],
+        "coverageExclude": [
+          "libs/team/src/**/index.ts",
+          "libs/team/src/**/*.routes.ts",
+          "libs/team/src/**/*.spec.ts"
+        ],
+        "coverageThresholds": {
+          "statements": 70,
+          "branches": 48,
+          "functions": 74,
+          "lines": 66
+        }
+      }
+    }
+  }
+}

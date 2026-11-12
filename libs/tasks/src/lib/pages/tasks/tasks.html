@@ -1,0 +1,92 @@
+<main class="mx-auto max-w-5xl px-4 py-10">
+  <div>
+    <h1 class="text-3xl font-bold tracking-tight text-neutral-900">
+      {{ 'TASKS.TITLE' | translate }}
+    </h1>
+    <p class="mt-1 text-neutral-600">{{ 'TASKS.LEAD' | translate }}</p>
+  </div>
+
+  <div class="mt-6 flex flex-wrap items-center gap-3">
+    <input
+      type="search"
+      [value]="store.search()"
+      (input)="onSearch($event)"
+      [placeholder]="'TASKS.SEARCH' | translate"
+      [attr.aria-label]="'TASKS.SEARCH' | translate"
+      class="w-64 rounded-xl border border-neutral-300 px-3 py-2 text-sm text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+    />
+
+    <div role="group" [attr.aria-label]="'TASKS.STATUS_FILTER' | translate" class="flex overflow-hidden rounded-xl border border-neutral-300">
+      @for (option of statusOptions; track option.value) {
+      <button
+        type="button"
+        (click)="store.setStatusFilter(option.value)"
+        [class.bg-neutral-900]="store.statusFilter() === option.value"
+        [class.text-white]="store.statusFilter() === option.value"
+        class="px-3 py-2 text-sm font-semibold transition-colors"
+      >
+        {{ option.labelKey | translate }}
+      </button>
+      }
+    </div>
+
+    <div role="group" [attr.aria-label]="'TASKS.PRIORITY_FILTER' | translate" class="flex overflow-hidden rounded-xl border border-neutral-300">
+      @for (option of priorityOptions; track option.value) {
+      <button
+        type="button"
+        (click)="store.setPriorityFilter(option.value)"
+        [class.bg-neutral-900]="store.priorityFilter() === option.value"
+        [class.text-white]="store.priorityFilter() === option.value"
+        class="px-3 py-2 text-sm font-semibold transition-colors"
+      >
+        {{ option.labelKey | translate }}
+      </button>
+      }
+    </div>
+  </div>
+
+  <p class="mt-4 text-sm text-neutral-500">
+    {{ store.filtered().length }} {{ 'TASKS.OF' | translate }}
+    {{ store.tasks().length }}
+  </p>
+
+  @if (store.loading()) {
+  <p class="mt-16 text-center text-neutral-500">{{ 'SHARED.LOADING' | translate }}</p>
+  } @else if (store.errorMessage(); as message) {
+  <p role="alert" class="mt-16 text-center font-medium text-red-600">{{ message }}</p>
+  } @else {
+  <ul class="mt-4 divide-y divide-neutral-200 rounded-2xl border border-neutral-200 bg-white">
+    @for (task of store.filtered(); track task.id) {
+    <li class="flex items-center gap-3 px-4 py-3">
+      <span
+        class="h-2.5 w-2.5 rounded-full"
+        [class]="
+          task.status === 'done'
+            ? 'bg-green-500'
+            : task.status === 'in_progress'
+              ? 'bg-amber-500'
+              : 'bg-neutral-300'
+        "
+        [attr.aria-label]="'TASKS.STATUS_' + task.status | translate"
+      ></span>
+      <span class="flex-1 font-medium text-neutral-900">{{ task.title }}</span>
+      <a
+        [routerLink]="['/projects', task.projectId]"
+        class="text-sm font-semibold text-neutral-400 hover:text-neutral-900"
+        >{{ 'TASKS.PROJECT' | translate }}</a
+      >
+      <lib-badge
+        [tone]="task.priority === 'high' ? 'warning' : task.priority === 'medium' ? 'info' : 'neutral'"
+        size="sm"
+        >{{ 'TASKS.PRIORITY_' + task.priority | translate }}</lib-badge
+      >
+      <lib-badge
+        [tone]="task.status === 'done' ? 'success' : task.status === 'in_progress' ? 'warning' : 'neutral'"
+        size="sm"
+        >{{ 'TASKS.STATUS_' + task.status | translate }}</lib-badge
+      >
+    </li>
+    }
+  </ul>
+  }
+</main>
