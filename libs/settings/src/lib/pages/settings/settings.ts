@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ANALYTICS } from '@libs/analytics';
 import { LANGUAGE_METADATA, Language } from '@libs/entity';
 import { ThemePreference } from '@libs/theme';
 import {
@@ -48,6 +49,7 @@ const LANGUAGE_OPTIONS: readonly SegmentedControlOption<Language>[] = (
 })
 export class Settings {
   private readonly store = inject(SettingsStore);
+  private readonly analytics = inject(ANALYTICS);
 
   readonly themeOptions = THEME_OPTIONS;
   readonly languageOptions = LANGUAGE_OPTIONS;
@@ -59,14 +61,20 @@ export class Settings {
   readonly reduceMotion = this.store.reduceMotion;
 
   setTheme(preference: ThemePreference): void {
+    if (preference === this.themePreference()) return;
     this.store.setThemePreference(preference);
+    this.analytics.logEvent('theme_preference_changed', { preference });
   }
 
   setLanguage(language: Language): void {
+    if (language === this.currentLanguage()) return;
     this.store.setLanguage(language);
+    this.analytics.logEvent('language_changed', { language });
   }
 
   setReduceMotion(enabled: boolean): void {
+    if (enabled === this.reduceMotion()) return;
     this.store.setReduceMotion(enabled);
+    this.analytics.logEvent('reduce_motion_changed', { enabled });
   }
 }

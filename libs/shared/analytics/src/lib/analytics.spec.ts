@@ -16,7 +16,13 @@ describe('ANALYTICS', () => {
     const analytics = TestBed.inject(ANALYTICS);
 
     expect(() => analytics.logEvent('some_event', { a: 1 })).not.toThrow();
+    expect(() =>
+      analytics.identifyUser('user_1', { email: 'a@b.dev' }),
+    ).not.toThrow();
+    expect(() => analytics.logInfo('message', { a: 1 })).not.toThrow();
+    expect(() => analytics.logException(new Error('kaput'))).not.toThrow();
     expect(() => analytics.logPageView('/profile', 'Profile')).not.toThrow();
+    expect(() => analytics.resetUser()).not.toThrow();
   });
 
   it('is overridable — this is the seam vendor libraries plug into', () => {

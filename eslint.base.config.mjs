@@ -15,9 +15,12 @@ const depConstraints = [
   { sourceTag: 'scope:environment-lib', onlyDependOnLibsWithTags: [] },
   // Design tokens + ThemeService. Consumed by everything, depends on nothing.
   { sourceTag: 'scope:theme-lib', onlyDependOnLibsWithTags: [] },
-  // The ANALYTICS contract. A leaf so that depending on analytics never drags a
-  // vendor SDK along.
-  { sourceTag: 'scope:analytics-lib', onlyDependOnLibsWithTags: [] },
+  // Analytics reads deployment configuration but remains independent of feature
+  // libraries.
+  {
+    sourceTag: 'scope:analytics-lib',
+    onlyDependOnLibsWithTags: ['scope:environment-lib'],
+  },
 
   {
     sourceTag: 'scope:translate',
@@ -39,6 +42,7 @@ const depConstraints = [
   {
     sourceTag: 'scope:settings',
     onlyDependOnLibsWithTags: [
+      'scope:analytics-lib',
       'scope:entity-lib',
       'scope:environment-lib',
       'scope:theme-lib',
@@ -63,6 +67,7 @@ const depConstraints = [
   {
     sourceTag: 'scope:session',
     onlyDependOnLibsWithTags: [
+      'scope:analytics-lib',
       'scope:entity-lib',
       'scope:environment-lib',
       'scope:theme-lib',

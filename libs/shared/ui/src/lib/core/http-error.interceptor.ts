@@ -16,11 +16,9 @@ export const httpErrorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
       analytics.logEvent('http_error', {
-        url: req.urlWithParams,
         method: req.method,
         // 0 means the request never reached the server (offline, CORS, blocked).
         status: error.status,
-        message: error.message?.slice(0, 300),
       });
 
       return throwError(() => error);
