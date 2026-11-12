@@ -55,7 +55,10 @@ test.describe('settings', () => {
   });
 
   test('shows the workspace panel with the tenant name', async ({ page }) => {
-    await expect(page.locator('lib-tenant-settings')).toBeVisible();
-    await expect(page.getByText('Harbor', { exact: true }).first()).toBeVisible();
+    const panel = page.locator('lib-tenant-settings');
+    await expect(panel).toBeVisible();
+    // Scoped to the panel: the sidebar's hidden drawer also contains "Harbor"
+    // on phones, and .first() would pick the hidden one.
+    await expect(panel.getByText('Harbor', { exact: true })).toBeVisible();
   });
 });

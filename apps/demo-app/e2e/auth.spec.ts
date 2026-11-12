@@ -48,8 +48,13 @@ test.describe('auth', () => {
     await page.getByRole('button', { name: /Harbor/ }).click();
     await expect(page.getByText('Dock Rebrand')).toBeVisible();
 
-    // Switch to Meadow via the sidebar's workspace switcher.
-    await page.locator('.nav__workspace-trigger').click();
+    // Switch to Meadow via the sidebar's workspace switcher. On phones the
+    // sidebar is a drawer behind the burger menu; open it first when hidden.
+    const trigger = page.locator('.nav__workspace-trigger');
+    if (!(await trigger.isVisible())) {
+      await page.locator('.bar__menu').click();
+    }
+    await trigger.click();
     await page.getByRole('menuitem', { name: 'Meadow' }).click();
 
     await expect.poll(brandVar(page), { timeout: 10_000 }).toBe('#3f6212'); // Meadow
