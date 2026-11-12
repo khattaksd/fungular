@@ -96,5 +96,14 @@
   },
   "overrides": {
     "undici": "7.30.2"
+  },
+  "allowScripts": {
+    "lmdb@3.5.6": true,
+    "msgpackr-extract@3.0.7": true,
+    "esbuild@0.28.2": true,
+    "nx@24.0.5": true,
+    "workerd@1.20261110.1": true,
+    "@parcel/watcher@2.6.0": true,
+    "@swc/core@1.16.22": true
   }
 }
